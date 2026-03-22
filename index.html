@@ -321,50 +321,20 @@
         <h2>The Proof Is <span class="highlight">in the Panel</span></h2>
         <p>Real projects. Real homes. Real craftsmanship across the Central Coast and Central Valley.</p>
       </div>
-    </div>
 
-    <!-- SOLAR & ENPHASE -->
-    <div class="gallery-category">
-      <div class="container gallery-cat-intro">
-        <div class="cat-divider">
-          <span class="gallery-cat-tag">Solar Systems</span>
-          <div class="cat-rule"></div>
-        </div>
-        <div class="cat-intro-row">
-          <h3 class="cat-title">Solar &amp; Enphase System Installs</h3>
-          <p class="cat-desc">From rooftop to main panel &mdash; we handle the complete electrical side of every solar install. Enphase microinverters, string inverters, grid-tie systems. Permitted, inspected, and built to produce for decades.</p>
-        </div>
-      </div>
-      <div class="gallery-grid-std">
-        <div class="gallery-item tall">
-          <img src="images/solar_sunset_commercial.jpg" alt="Commercial solar installation at sunset" loading="lazy" />
-          <div class="gallery-caption">Commercial Solar</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/solarPanels_2.jpg" alt="Solar panel system" loading="lazy" />
-          <div class="gallery-caption">Solar System</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/enphase_panels_2.jpg" alt="Enphase solar system" loading="lazy" />
-          <div class="gallery-caption">Enphase Install</div>
-        </div>
-        <div class="gallery-item tall">
-          <img src="images/solarPanels_3.jpg" alt="Solar array" loading="lazy" />
-          <div class="gallery-caption">Solar Array</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/enphase_panels_3.jpg" alt="Enphase microinverter system" loading="lazy" />
-          <div class="gallery-caption">Enphase System</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/solarPanels_5.jpg" alt="Residential solar installation" loading="lazy" />
-          <div class="gallery-caption">Residential Solar</div>
-        </div>
+      <!-- Filter Pills -->
+      <div class="gallery-filters">
+        <button class="gallery-filter active" data-filter="all">All Projects</button>
+        <button class="gallery-filter" data-filter="solar">Solar &amp; Enphase</button>
+        <button class="gallery-filter" data-filter="ev">EV &amp; Battery</button>
+        <button class="gallery-filter" data-filter="panels">Panel Upgrades</button>
+        <button class="gallery-filter" data-filter="commercial">Commercial</button>
+        <button class="gallery-filter" data-filter="remodels">Remodels &amp; Lighting</button>
       </div>
     </div>
 
-    <!-- EV & BATTERY STORAGE (FEATURED) -->
-    <div class="gallery-ev-feature">
+    <!-- EV & BATTERY STORAGE (FEATURED — shows for All / EV filter) -->
+    <div class="gallery-ev-feature" id="gallery-ev-section">
       <div class="container">
         <div class="gallery-ev-layout">
           <div class="gallery-ev-img">
@@ -398,95 +368,194 @@
       </div>
     </div>
 
-    <!-- PANEL UPGRADES & SERVICE -->
-    <div class="gallery-category">
-      <div class="container gallery-cat-intro">
-        <div class="cat-divider">
-          <span class="gallery-cat-tag">Panels &amp; Service</span>
-          <div class="cat-rule"></div>
-        </div>
-        <div class="cat-intro-row">
-          <h3 class="cat-title">Panel Upgrades &amp; Precision Work</h3>
-          <p class="cat-desc">200-amp service upgrades, meter box replacements, and meticulous panel wiring. Every circuit labeled, every connection torqued to spec &mdash; and every job passes inspection on the first visit.</p>
-        </div>
-      </div>
-      <div class="gallery-grid-std">
-        <div class="gallery-item tall">
-          <img src="images/panel_wiring_a.jpg" alt="Precision electrical panel wiring" loading="lazy" />
-          <div class="gallery-caption">Precision Wiring</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/mag_electrical_panel3.jpg" alt="Electrical panel installation" loading="lazy" />
-          <div class="gallery-caption">Panel Install</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/mag_electrical_panel4.jpg" alt="200-amp panel upgrade" loading="lazy" />
-          <div class="gallery-caption">200A Upgrade</div>
-        </div>
-        <div class="gallery-item tall">
-          <img src="images/meterBox_4.jpg" alt="Meter box upgrade" loading="lazy" />
-          <div class="gallery-caption">Meter Upgrade</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/meterBox_4_b.jpg" alt="Service upgrade" loading="lazy" />
-          <div class="gallery-caption">Service Upgrade</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/enphase_panels_4.jpg" alt="Solar system panel integration" loading="lazy" />
-          <div class="gallery-caption">Solar Integration</div>
-        </div>
-      </div>
-    </div>
+    <!-- CARD GRID -->
+    <div class="container">
+      <div class="gallery-card-grid">
 
-    <!-- COMMERCIAL ELECTRICAL -->
-    <div class="gallery-category">
-      <div class="container gallery-cat-intro">
-        <div class="cat-divider">
-          <span class="gallery-cat-tag">Commercial Work</span>
-          <div class="cat-rule"></div>
+        <!-- ── SOLAR & ENPHASE ── -->
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/solar_sunset_commercial.jpg" alt="Commercial solar installation at sunset" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Commercial Solar Install</h4>
+            <p class="gallery-card-desc">Full rooftop array on a commercial property &mdash; permitted, grid-tied, and built to produce for decades.</p>
+          </div>
         </div>
-        <div class="cat-intro-row">
-          <h3 class="cat-title">Commercial Electrical &amp; Job Site</h3>
-          <p class="cat-desc">From gas station signage to multi-unit service upgrades &mdash; we do permitted commercial work on time and built to code. Inspections welcome. Results guaranteed.</p>
-        </div>
-      </div>
-      <div class="gallery-grid-2col">
-        <div class="gallery-item tall">
-          <img src="images/commercial_76_station.jpg" alt="Commercial electrical work at 76 gas station" loading="lazy" />
-          <div class="gallery-caption">Commercial Install</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/mag_on_job.jpg" alt="Matthew Gil, electrician, on the job" loading="lazy" />
-          <div class="gallery-caption">On the Job</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- KITCHEN & LIGHTING REMODELS -->
-    <div class="gallery-category">
-      <div class="container gallery-cat-intro">
-        <div class="cat-divider">
-          <span class="gallery-cat-tag">Remodels &amp; Lighting</span>
-          <div class="cat-rule"></div>
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/solarPanels_2.jpg" alt="Residential solar panel system" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Residential Solar System</h4>
+            <p class="gallery-card-desc">Clean residential install with all wiring concealed, inverter spec&rsquo;d right, and inspection passed first try.</p>
+          </div>
         </div>
-        <div class="cat-intro-row">
-          <h3 class="cat-title">Kitchen Rewires &amp; Lighting Design</h3>
-          <p class="cat-desc">Recessed lighting, under-cabinet systems, new circuits, GFCI protection &mdash; the electrical work that makes a remodel shine. Done right from rough-in to final inspection.</p>
-        </div>
-      </div>
-      <div class="gallery-grid-2col">
-        <div class="gallery-item">
-          <img src="images/kitchen_remodel_1.jpg" alt="Kitchen remodel with recessed and under-cabinet lighting" loading="lazy" />
-          <div class="gallery-caption">Kitchen Lighting</div>
-        </div>
-        <div class="gallery-item">
-          <img src="images/kitchen_remodel_2.jpg" alt="Kitchen remodel recessed lighting install" loading="lazy" />
-          <div class="gallery-caption">Recessed Lighting</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="container" style="text-align:center;margin-top:64px">
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/enphase_panels_2.jpg" alt="Enphase microinverter solar system" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Enphase Microinverter System</h4>
+            <p class="gallery-card-desc">Panel-level optimization with Enphase IQ microinverters &mdash; maximum efficiency with monitoring from your phone.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/solarPanels_3.jpg" alt="Multi-row solar array installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Solar Array Build-Out</h4>
+            <p class="gallery-card-desc">Multi-row roof-mount array, bonded, grounded, and code-compliant. Every string verified before we leave.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/enphase_panels_3.jpg" alt="Enphase solar panel installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Enphase Solar Install</h4>
+            <p class="gallery-card-desc">Enphase IQ system commissioned and live &mdash; every panel confirmed producing from day one.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/solarPanels_5.jpg" alt="Residential rooftop solar installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Residential Rooftop Solar</h4>
+            <p class="gallery-card-desc">Whole-home solar solution with dedicated solar sub-panel and updated main service to match the new load.</p>
+          </div>
+        </div>
+
+        <!-- ── PANEL UPGRADES ── -->
+        <div class="gallery-card" data-category="panels">
+          <div class="gallery-card-img">
+            <img src="images/panel_wiring_a.jpg" alt="Precision electrical panel wiring" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Panel Upgrades</span>
+            <h4 class="gallery-card-title">Precision Panel Wiring</h4>
+            <p class="gallery-card-desc">Every circuit labeled, every wire torqued to spec &mdash; the craftsmanship that passes inspection every time.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="panels">
+          <div class="gallery-card-img">
+            <img src="images/mag_electrical_panel3.jpg" alt="New 200-amp electrical panel installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Panel Upgrades</span>
+            <h4 class="gallery-card-title">200-Amp Panel Install</h4>
+            <p class="gallery-card-desc">New panel with room to grow &mdash; solar-ready breaker slots, labeled circuits, permit in the box.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="panels">
+          <div class="gallery-card-img">
+            <img src="images/mag_electrical_panel4.jpg" alt="200-amp service panel upgrade" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Panel Upgrades</span>
+            <h4 class="gallery-card-title">Service Panel Upgrade</h4>
+            <p class="gallery-card-desc">Full 200A upgrade replacing an undersized panel. Load calculated, breakers sized right, done in a day.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="panels">
+          <div class="gallery-card-img">
+            <img src="images/meterBox_4.jpg" alt="Meter box upgrade and replacement" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Panel Upgrades</span>
+            <h4 class="gallery-card-title">Meter Box Upgrade</h4>
+            <p class="gallery-card-desc">Utility-side meter base replacement with new riser and weatherhead. Done to POCO spec, first inspection passed.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="panels">
+          <div class="gallery-card-img">
+            <img src="images/meterBox_4_b.jpg" alt="Complete meter and service upgrade" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Panel Upgrades</span>
+            <h4 class="gallery-card-title">Meter &amp; Service Upgrade</h4>
+            <p class="gallery-card-desc">Complete service entrance upgrade &mdash; meter base, conduit, weatherhead, and new panel, all in one shot.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="panels">
+          <div class="gallery-card-img">
+            <img src="images/enphase_panels_4.jpg" alt="Panel upgraded for solar integration" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Panel Upgrades</span>
+            <h4 class="gallery-card-title">Solar-Ready Panel Integration</h4>
+            <p class="gallery-card-desc">Existing panel upgraded and backfeed-ready for solar. No rewiring required when the panels go up.</p>
+          </div>
+        </div>
+
+        <!-- ── COMMERCIAL ── -->
+        <div class="gallery-card" data-category="commercial">
+          <div class="gallery-card-img">
+            <img src="images/commercial_76_station.jpg" alt="Commercial electrical work at 76 gas station" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Commercial</span>
+            <h4 class="gallery-card-title">Commercial Electrical &mdash; 76 Station</h4>
+            <p class="gallery-card-desc">Permitted commercial electrical at a regional gas station. Signage, service, and safety &mdash; on schedule, on spec.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="commercial">
+          <div class="gallery-card-img">
+            <img src="images/mag_on_job.jpg" alt="Matthew Gil, master electrician, on the job" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Commercial</span>
+            <h4 class="gallery-card-title">Owner on Every Job</h4>
+            <p class="gallery-card-desc">Matthew shows up to every major project &mdash; not just a name on a truck. You get the owner&rsquo;s expertise, every time.</p>
+          </div>
+        </div>
+
+        <!-- ── REMODELS & LIGHTING ── -->
+        <div class="gallery-card" data-category="remodels">
+          <div class="gallery-card-img">
+            <img src="images/kitchen_remodel_1.jpg" alt="Kitchen remodel with recessed lighting" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
+            <h4 class="gallery-card-title">Kitchen Recessed Lighting</h4>
+            <p class="gallery-card-desc">Full kitchen rewire with recessed cans, under-cabinet circuits, and GFCI protection throughout. Same-day rough-in.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="remodels">
+          <div class="gallery-card-img">
+            <img src="images/kitchen_remodel_2.jpg" alt="Kitchen lighting design and installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
+            <h4 class="gallery-card-title">Kitchen Lighting Design</h4>
+            <p class="gallery-card-desc">New ceiling layout, dimmable LED recessed lighting &mdash; designed for the space, wired to code, finished on schedule.</p>
+          </div>
+        </div>
+
+      </div><!-- /.gallery-card-grid -->
+    </div><!-- /.container -->
+
+    <div class="container" style="text-align:center;margin-top:56px">
       <a href="#estimate" class="btn btn-primary">Ready to Start Your Project?</a>
     </div>
   </section>
@@ -632,5 +701,6 @@
   </footer>
 
   <script src="js/nav.js"></script>
+  <script src="js/gallery.js"></script>
 </body>
 </html>
