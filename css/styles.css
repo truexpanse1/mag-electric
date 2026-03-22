@@ -419,25 +419,49 @@ h3 { font-size: 1.15rem; font-weight: 700; font-family: 'Inter', sans-serif; }
 .footer-bottom p { font-size: 0.78rem; color: var(--text-dim); text-align: center; }
 
 /* ===== GALLERY ===== */
-.gallery { background: var(--charcoal-2); }
-.gallery-grid {
+.gallery { background: var(--charcoal-2); padding-bottom: 80px; }
+.gallery-category { margin-bottom: 72px; }
+.gallery-category:last-of-type { margin-bottom: 0; }
+
+.gallery-cat-intro { margin-bottom: 28px; }
+.cat-divider {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+}
+.gallery-cat-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); background: var(--gold-glow);
+  border: 1px solid var(--border-gold);
+  padding: 5px 14px; border-radius: 100px; white-space: nowrap;
+}
+.cat-rule { flex: 1; height: 1px; background: var(--border); }
+.cat-intro-row {
+  display: grid; grid-template-columns: 1fr; gap: 10px;
+}
+.cat-title {
+  font-size: clamp(1.25rem, 3vw, 1.85rem);
+  font-family: 'Barlow', sans-serif; font-weight: 800;
+  color: var(--text-primary); line-height: 1.2;
+}
+.cat-desc {
+  color: var(--text-muted); font-size: 0.93rem;
+  line-height: 1.72; max-width: 580px;
+}
+
+/* Standard image grid (solar + panels) */
+.gallery-grid-std {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 220px;
   gap: 4px;
-  margin-top: 0;
 }
 .gallery-item {
-  position: relative;
-  overflow: hidden;
-  background: var(--charcoal-3);
+  position: relative; overflow: hidden; background: var(--charcoal-3);
 }
 .gallery-item.tall { grid-row: span 2; }
 .gallery-item img {
   width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  display: block;
+  object-fit: cover; transition: transform 0.5s ease; display: block;
 }
 .gallery-item:hover img { transform: scale(1.06); }
 .gallery-caption {
@@ -449,6 +473,36 @@ h3 { font-size: 1.15rem; font-weight: 700; font-family: 'Inter', sans-serif; }
   opacity: 0; transition: opacity 0.3s ease;
 }
 .gallery-item:hover .gallery-caption { opacity: 1; }
+
+/* EV / Battery featured section */
+.gallery-ev-feature {
+  background: var(--charcoal-3);
+  border-top: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-gold);
+  padding: 56px 0; margin-bottom: 72px;
+}
+.gallery-ev-layout {
+  display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+}
+.gallery-ev-img {
+  border-radius: var(--radius-lg); overflow: hidden;
+  aspect-ratio: 4/3; background: var(--charcoal-4);
+}
+.gallery-ev-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-ev-copy .gallery-cat-tag { margin-bottom: 14px; display: inline-block; }
+.gallery-ev-copy h3 {
+  font-size: clamp(1.4rem, 3vw, 2rem); font-family: 'Barlow', sans-serif;
+  font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 16px;
+}
+.gallery-ev-copy p {
+  color: var(--text-muted); font-size: 0.95rem; line-height: 1.76; margin-bottom: 24px;
+}
+.ev-bullets { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.ev-bullets li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.875rem; color: var(--text-secondary); font-weight: 500;
+}
+.ev-bullets svg { flex-shrink: 0; }
 
 /* ===== RESPONSIVE: TABLET ===== */
 @media (min-width: 768px) {
@@ -462,7 +516,10 @@ h3 { font-size: 1.15rem; font-weight: 700; font-family: 'Inter', sans-serif; }
   .process-arrow { transform: rotate(0); padding: 0 4px; }
   .process-step { max-width: 280px; }
   .reviews-grid { grid-template-columns: repeat(3, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; }
+  .gallery-grid-std { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; }
+  .cat-intro-row { grid-template-columns: auto 1fr; gap: 32px; align-items: end; }
+  .gallery-ev-layout { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .gallery-ev-img { aspect-ratio: unset; height: 420px; }
   .cta-inner { flex-direction: row; text-align: left; justify-content: space-between; }
   .estimate-layout { grid-template-columns: 1fr 1fr; align-items: start; gap: 64px; }
   .form-row { grid-template-columns: 1fr 1fr; }
