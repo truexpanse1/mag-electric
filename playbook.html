@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electrician Sales Playbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #EAB308;
+      --gold-light: #FDE047;
+      --gold-glow: rgba(234,179,8,0.10);
+      --gold-border: rgba(234,179,8,0.22);
+      --bg: #0D1117;
+      --bg2: #111827;
+      --bg3: #1F2937;
+      --bg4: #374151;
+      --text: #F9FAFB;
+      --text2: #E5E7EB;
+      --muted: #9CA3AF;
+      --dim: #6B7280;
+      --border: rgba(255,255,255,0.07);
+      --radius: 10px;
+      --header-h: 60px;
+      --tab-h: 52px;
+      --sidebar-w: 220px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--header-h);
+      background: rgba(13,17,23,0.97);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+      backdrop-filter: blur(12px);
+    }
+    .header-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .header-brand em { font-style: normal; color: var(--gold); }
+    .header-title {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      background: var(--gold-glow); border: 1px solid var(--gold-border);
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .header-hint {
+      font-size: 0.7rem; color: var(--dim);
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      position: fixed; top: var(--header-h); left: 0; right: 0; z-index: 99;
+      height: var(--tab-h);
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: stretch;
+    }
+    .tab-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 8px; border: none; background: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); transition: all 0.18s ease;
+      border-bottom: 2px solid transparent;
+      position: relative;
+    }
+    .tab-btn:hover { color: var(--text2); background: rgba(255,255,255,0.03); }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); background: var(--gold-glow); }
+    .tab-btn svg { flex-shrink: 0; }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: flex;
+      position: fixed;
+      top: calc(var(--header-h) + var(--tab-h));
+      left: 0; right: 0; bottom: 0;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w); flex-shrink: 0;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 12px 8px;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 4px; }
+    .sidebar-group { margin-bottom: 20px; }
+    .sidebar-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--dim);
+      padding: 0 8px 6px;
+    }
+    .sidebar-btn {
+      display: flex; align-items: center; gap: 9px;
+      width: 100%; padding: 9px 10px; border-radius: 8px;
+      border: none; background: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
+      color: var(--muted); text-align: left;
+      transition: all 0.15s ease;
+      margin-bottom: 2px;
+    }
+    .sidebar-btn:hover { background: var(--bg3); color: var(--text2); }
+    .sidebar-btn.active {
+      background: var(--gold-glow); color: var(--gold);
+      border: 1px solid var(--gold-border);
+    }
+    .sidebar-btn .sb-icon {
+      width: 26px; height: 26px; border-radius: 6px;
+      background: var(--bg3); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.9rem;
+    }
+    .sidebar-btn.active .sb-icon { background: rgba(234,179,8,0.15); }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      flex: 1; overflow-y: auto;
+      padding: 24px 28px;
+      background: var(--bg);
+    }
+    .main::-webkit-scrollbar { width: 5px; }
+    .main::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 4px; }
+
+    .content-panel { display: none; }
+    .content-panel.active { display: block; }
+
+    /* Content blocks */
+    .panel-header { margin-bottom: 24px; }
+    .panel-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); background: var(--gold-glow);
+      border: 1px solid var(--gold-border);
+      padding: 3px 10px; border-radius: 100px; margin-bottom: 10px;
+    }
+    .panel-title {
+      font-family: 'Barlow', sans-serif; font-weight: 800;
+      font-size: 1.5rem; color: var(--text); line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .panel-sub { color: var(--muted); font-size: 0.85rem; line-height: 1.65; max-width: 560px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px; }
+    @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+    }
+    .card:hover { border-color: var(--gold-border); }
+    .card-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .card-title { font-weight: 700; font-size: 0.95rem; color: var(--text2); margin-bottom: 8px; }
+    .card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+    .callout {
+      background: var(--gold-glow); border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius); padding: 14px 18px; margin-bottom: 16px;
+    }
+    .callout-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .callout p, .callout li { font-size: 0.83rem; color: var(--text2); line-height: 1.7; }
+    .callout ul { padding-left: 16px; }
+    .callout li { margin-bottom: 4px; }
+
+    .steal-line {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius); padding: 14px 18px; margin-bottom: 12px;
+    }
+    .steal-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .steal-line p { font-size: 0.85rem; color: var(--text); line-height: 1.7; font-style: italic; }
+
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .bullet-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.83rem; color: var(--text2); line-height: 1.6;
+    }
+    .bullet-list li::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      background: var(--gold); border-radius: 50%;
+      flex-shrink: 0; margin-top: 7px;
+    }
+
+    .objection-block { margin-bottom: 20px; }
+    .objection-q {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 12px 16px; font-size: 0.85rem; font-weight: 600; color: var(--text2);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .objection-q::before { content: '"'; font-size: 1.4rem; color: var(--dim); line-height: 1; }
+    .objection-a {
+      background: var(--gold-glow); border: 1px solid var(--gold-border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 12px 16px; font-size: 0.83rem; color: var(--text2); line-height: 1.7;
+    }
+    .objection-a strong { color: var(--gold); }
+
+    .price-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      font-size: 0.83rem;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-row-label { color: var(--text2); font-weight: 500; }
+    .price-row-val { color: var(--gold); font-weight: 700; font-family: 'Barlow', sans-serif; font-size: 1rem; }
+
+    .section-divider {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--dim);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px; margin: 24px 0 16px;
+    }
+
+    .badge {
+      display: inline-block; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 100px;
+    }
+    .badge-gold { background: var(--gold); color: #000; }
+    .badge-green { background: rgba(52,211,153,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3); }
+    .badge-red { background: rgba(239,68,68,0.12); color: #F87171; border: 1px solid rgba(239,68,68,0.25); }
+
+    .script-step {
+      display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start;
+    }
+    .script-num {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--gold-glow); border: 1px solid var(--gold-border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow', sans-serif; font-weight: 900; font-size: 0.8rem; color: var(--gold);
+    }
+    .script-body { flex: 1; }
+    .script-step-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
+    .script-step-text { font-size: 0.83rem; color: var(--text2); line-height: 1.7; }
+    .script-step-text em { font-style: italic; color: var(--text); }
+
+    .pkg-header { text-align: center; padding: 20px; border-bottom: 1px solid var(--border); }
+    .pkg-name { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .pkg-price { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--gold); margin: 4px 0; }
+    .pkg-desc { font-size: 0.75rem; color: var(--muted); }
+    .pkg-body { padding: 16px 20px; }
+    .pkg-item { display: flex; gap: 8px; font-size: 0.8rem; color: var(--text2); margin-bottom: 8px; align-items: flex-start; }
+    .pkg-check { color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+    .card.featured-pkg { border-color: var(--gold-border); background: linear-gradient(135deg, var(--bg2), rgba(234,179,8,0.04)); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">
+    <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" fill="#111" stroke="#EAB308" stroke-width="1.5"/>
+      <rect x="14" y="7" width="2.5" height="5" rx="1" fill="white"/>
+      <rect x="17.5" y="7" width="2.5" height="5" rx="1" fill="white"/>
+      <path d="M12.5 12 H21.5 V16 A4.5 4.5 0 0 1 12.5 16 Z" fill="white"/>
+      <rect x="16" y="20" width="2" height="4" rx="1" fill="white"/>
+      <path d="M18 13 L15.5 17 H17.5 L16 21 L20 15.5 H17.5 Z" fill="#EAB308"/>
+    </svg>
+    MAG <em>&nbsp;ELECTRIC</em>
+  </div>
+  <div class="header-title">⚡ Sales Playbook</div>
+  <div class="header-hint">Select a tab → pick a topic</div>
+</header>
+
+<!-- TABS -->
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="services" onclick="switchTab('services', this)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="2" x2="8" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+    Services
+  </button>
+  <button class="tab-btn" data-tab="packages" onclick="switchTab('packages', this)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+    Packages
+  </button>
+  <button class="tab-btn" data-tab="pricing" onclick="switchTab('pricing', this)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    Pricing
+  </button>
+  <button class="tab-btn" data-tab="objections" onclick="switchTab('objections', this)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Objections
+  </button>
+  <button class="tab-btn" data-tab="close" onclick="switchTab('close', this)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    Close Scripts
+  </button>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+
+    <!-- Services sidebar -->
+    <div class="sidebar-group" id="sb-services">
+      <div class="sidebar-label">Service Type</div>
+      <button class="sidebar-btn active" onclick="switchContent('panel-upgrade', this)">
+        <span class="sb-icon">⚡</span> Panel Upgrade
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('ev-charger', this)">
+        <span class="sb-icon">🔌</span> EV Charger
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('rewire', this)">
+        <span class="sb-icon">🏠</span> Whole Home Rewire
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('span', this)">
+        <span class="sb-icon">📱</span> SPAN Smart Panel
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('solar-ready', this)">
+        <span class="sb-icon">☀️</span> Solar-Ready
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('remodel', this)">
+        <span class="sb-icon">🔧</span> Kitchen / Bath
+      </button>
+    </div>
+
+    <!-- Packages sidebar -->
+    <div class="sidebar-group" id="sb-packages" style="display:none">
+      <div class="sidebar-label">Package Tier</div>
+      <button class="sidebar-btn active" onclick="switchContent('pkg-essential', this)">
+        <span class="sb-icon">🔹</span> Essential
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('pkg-premium', this)">
+        <span class="sb-icon">⭐</span> Premium
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('pkg-complete', this)">
+        <span class="sb-icon">🏆</span> Complete Home
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('pkg-present', this)">
+        <span class="sb-icon">🎯</span> How to Present
+      </button>
+    </div>
+
+    <!-- Pricing sidebar -->
+    <div class="sidebar-group" id="sb-pricing" style="display:none">
+      <div class="sidebar-label">By Job Type</div>
+      <button class="sidebar-btn active" onclick="switchContent('price-panels', this)">
+        <span class="sb-icon">📋</span> Panel Jobs
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('price-ev', this)">
+        <span class="sb-icon">🚗</span> EV Chargers
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('price-rewire', this)">
+        <span class="sb-icon">🏠</span> Rewires
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('price-defend', this)">
+        <span class="sb-icon">🛡️</span> Defending Price
+      </button>
+    </div>
+
+    <!-- Objections sidebar -->
+    <div class="sidebar-group" id="sb-objections" style="display:none">
+      <div class="sidebar-label">Objection Type</div>
+      <button class="sidebar-btn active" onclick="switchContent('obj-price', this)">
+        <span class="sb-icon">💰</span> "Too Expensive"
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('obj-quote', this)">
+        <span class="sb-icon">📄</span> "Get Other Quotes"
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('obj-think', this)">
+        <span class="sb-icon">💭</span> "Need to Think"
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('obj-permit', this)">
+        <span class="sb-icon">📋</span> "Skip the Permit"
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('obj-spouse', this)">
+        <span class="sb-icon">👫</span> "Ask My Spouse"
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('obj-diy', this)">
+        <span class="sb-icon">🔨</span> "My Brother-in-Law"
+      </button>
+    </div>
+
+    <!-- Close Scripts sidebar -->
+    <div class="sidebar-group" id="sb-close" style="display:none">
+      <div class="sidebar-label">Script Type</div>
+      <button class="sidebar-btn active" onclick="switchContent('close-call', this)">
+        <span class="sb-icon">📞</span> First Call
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('close-site', this)">
+        <span class="sb-icon">🏠</span> Site Visit
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('close-quote', this)">
+        <span class="sb-icon">💰</span> Quote Delivery
+      </button>
+      <button class="sidebar-btn" onclick="switchContent('close-followup', this)">
+        <span class="sb-icon">📲</span> Follow-Up
+      </button>
+    </div>
+
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ═══ SERVICES ═══ -->
+
+    <!-- Panel Upgrade -->
+    <div class="content-panel active" id="panel-upgrade">
+      <div class="panel-header">
+        <div class="panel-tag">Service</div>
+        <div class="panel-title">Panel Upgrade</div>
+        <div class="panel-sub">200-amp service upgrades, subpanel installs, solar-ready breaker slots. The most common upsell on any job site.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">⚡ Why They Need It</div>
+        <ul>
+          <li>Old 100A panels can't support EV chargers, modern appliances, or solar</li>
+          <li>Panels over 20 years old are a liability and insurance risk</li>
+          <li>Failing breakers = fire hazard that their homeowner's insurance won't cover</li>
+          <li>Can't add circuits for remodels without upgrading first</li>
+        </ul>
+      </div>
+
+      <div class="section-divider">Key Selling Points</div>
+      <ul class="bullet-list">
+        <li>One-day install in most cases — minimal disruption</li>
+        <li>Permit pulled and inspection passed — protects their home sale</li>
+        <li>Solar and EV-ready slots built in at no extra cost</li>
+        <li>Written quote, nothing added after the fact</li>
+      </ul>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line</div>
+        <p>"Most homeowners don't know their panel is a problem until they try to sell their home or file an insurance claim. We can fix it now, before it costs you five times more."</p>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line</div>
+        <p>"This isn't just an upgrade — it's protection. When your panel passes inspection, you have documentation that your home's electrical is to code. That's real value."</p>
+      </div>
+    </div>
+
+    <!-- EV Charger -->
+    <div class="content-panel" id="ev-charger">
+      <div class="panel-header">
+        <div class="panel-tag">Service</div>
+        <div class="panel-title">EV Charger Installation</div>
+        <div class="panel-sub">Level 2 home charging for Tesla and all makes. High-value, low-complexity job with excellent upsell potential to panel upgrade.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">⚡ The Opportunity</div>
+        <ul>
+          <li>EV sales are up — every new EV owner needs a Level 2 charger at home</li>
+          <li>Level 1 (wall outlet) takes 40–60 hours to charge; Level 2 takes 4–8 hours</li>
+          <li>Unpermitted installs won't pass home inspection and void manufacturer warranty</li>
+          <li>Often reveals need for panel upgrade = upsell on 60%+ of jobs</li>
+        </ul>
+      </div>
+
+      <div class="section-divider">Key Selling Points</div>
+      <ul class="bullet-list">
+        <li>Dedicated 50A circuit sized for their specific vehicle</li>
+        <li>Permit pulled — protects warranty and resale value</li>
+        <li>Hardwired or NEMA 14-50 outlet options available</li>
+        <li>Panel capacity evaluated before every install — no surprises</li>
+      </ul>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line</div>
+        <p>"Plugging your $70,000 Tesla into a regular outlet is like filling a sports car with 87 octane. A Level 2 charger is the only right answer for your vehicle."</p>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line (on permit)</div>
+        <p>"Without a permit, your install isn't inspected, your warranty can be voided, and when you sell this house — it has to be disclosed. It's not worth the savings."</p>
+      </div>
+    </div>
+
+    <!-- Rewire -->
+    <div class="content-panel" id="rewire">
+      <div class="panel-header">
+        <div class="panel-tag">Service</div>
+        <div class="panel-title">Whole Home Rewire</div>
+        <div class="panel-sub">The highest-ticket residential job. Often found during remodels, home purchases, or insurance inspections.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">🚨 Red Flags That Signal a Rewire</div>
+        <ul>
+          <li>Aluminum wiring (1965–1973 homes) — major fire risk</li>
+          <li>Knob and tube wiring — ungrounded, often not insurable</li>
+          <li>Cloth-wrapped wiring — insulation deteriorated</li>
+          <li>Home built before 1975 with no documented upgrades</li>
+          <li>Tripping breakers, burning smells, lights dimming</li>
+        </ul>
+      </div>
+
+      <div class="section-divider">Key Selling Points</div>
+      <ul class="bullet-list">
+        <li>New copper wiring throughout — modern code compliance</li>
+        <li>Updated outlets, GFCI protection in all required areas</li>
+        <li>Home becomes insurable and sellable without disclosure</li>
+        <li>Paired with panel upgrade — most complete safety package</li>
+      </ul>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line (aluminum wiring)</div>
+        <p>"Aluminum wiring doesn't fail gradually — it fails all at once. Insurance companies know this, which is why many won't insure it at all. This isn't a maybe — it's a when."</p>
+      </div>
+    </div>
+
+    <!-- SPAN -->
+    <div class="content-panel" id="span">
+      <div class="panel-header">
+        <div class="panel-tag">Service</div>
+        <div class="panel-title">SPAN Smart Panel</div>
+        <div class="panel-sub">The premium upgrade for tech-forward homeowners. SPAN replaces the standard panel with a connected, circuit-level smart panel.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">📱 What SPAN Does</div>
+        <ul>
+          <li>Circuit-level energy monitoring from a smartphone app</li>
+          <li>Remote control of every circuit individually</li>
+          <li>Automatic load management during outages (battery + solar priority)</li>
+          <li>Pairs with Tesla Powerwall, Enphase, and solar systems</li>
+          <li>Future-proof — firmware updates keep it current</li>
+        </ul>
+      </div>
+
+      <div class="section-divider">Ideal Customer Profile</div>
+      <ul class="bullet-list">
+        <li>Already has or planning solar + battery storage</li>
+        <li>Has EV + wants to maximize charging during off-peak hours</li>
+        <li>Tech-oriented homeowner who values remote control and data</li>
+        <li>New construction or full remodel — easier install</li>
+      </ul>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line</div>
+        <p>"With SPAN, you can see exactly what's drawing power in your home, turn off circuits remotely, and prioritize your Tesla charging during the cheapest rate window. It pays for itself."</p>
+      </div>
+    </div>
+
+    <!-- Solar Ready -->
+    <div class="content-panel" id="solar-ready">
+      <div class="panel-header">
+        <div class="panel-tag">Service</div>
+        <div class="panel-title">Solar-Ready Upgrade</div>
+        <div class="panel-sub">Pre-wire the home for solar before the panels go up. Saves the customer money and eliminates the double-dig problem.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">☀️ The Pitch</div>
+        <ul>
+          <li>Solar installers charge $800–$2,500 to upgrade a panel after the fact</li>
+          <li>A solar-ready panel today costs $300–$600 more than a standard upgrade</li>
+          <li>It also adds a dedicated backfeed breaker slot and proper metering</li>
+          <li>Best time is during any panel work — walls are already open</li>
+        </ul>
+      </div>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ Steal This Line</div>
+        <p>"While we have your panel open, we can add the solar-ready breaker slot. It's a few hundred dollars now. If you wait until the solar company comes, they'll charge you over a thousand — and have to come back out."</p>
+      </div>
+    </div>
+
+    <!-- Remodel -->
+    <div class="content-panel" id="remodel">
+      <div class="panel-header">
+        <div class="panel-tag">Service</div>
+        <div class="panel-title">Kitchen &amp; Bath Remodel</div>
+        <div class="panel-sub">Recurring remodel work. Build contractor relationships for ongoing pipeline — the best source of non-emergency electrical work.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">🔧 Scope Checklist</div>
+        <ul>
+          <li>New dedicated circuits for refrigerator, dishwasher, microwave</li>
+          <li>GFCI protection within 6 feet of all water sources</li>
+          <li>Under-cabinet lighting circuits (low-voltage or line-voltage)</li>
+          <li>Exhaust fan circuits — often missing in older baths</li>
+          <li>Updated panel capacity check before rough-in begins</li>
+        </ul>
+      </div>
+
+      <div class="section-divider">Contractor Partnership Pitch</div>
+      <ul class="bullet-list">
+        <li>Show up on time, every time — contractors remember who they can count on</li>
+        <li>Rough-in same day as scheduled — don't hold up their crew</li>
+        <li>Permit-pull included — makes their project inspection-ready</li>
+        <li>Single contact number, direct line to Matthew</li>
+      </ul>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ Line for Contractors</div>
+        <p>"I know how rare it is to find an electrician who shows up when they say they will and pulls their own permits. That's all I do. If your last guy let you down, give me one job to prove it."</p>
+      </div>
+    </div>
+
+    <!-- ═══ PACKAGES ═══ -->
+
+    <div class="content-panel" id="pkg-essential">
+      <div class="panel-header">
+        <div class="panel-tag">Package</div>
+        <div class="panel-title">Essential Package</div>
+        <div class="panel-sub">Entry-level service for the price-conscious customer. Gets the job done, sets the relationship, opens the door for future work.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">What's Included</div>
+          <div class="pkg-body" style="padding:0">
+            <div class="pkg-item"><span class="pkg-check">✓</span> Service assessment + written quote</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Single-scope job (panel, EV, or repair)</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Permit pulled and inspection scheduled</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> 1-year workmanship warranty</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-label">Best For</div>
+          <p>First-time customers, rental properties, straightforward single-job requests. Low barrier to entry — gets them in the door.</p>
+          <br/>
+          <div class="card-label" style="margin-top:8px">Upsell Opportunity</div>
+          <p>Assess during job — look for aging panel, aluminum wiring, or missing GFCI. Quote on the spot.</p>
+        </div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ How to Present It</div>
+        <p>"This is exactly what you need to get done right. Permit pulled, inspection passed, and you've got a year of warranty on the work. That's it — no hidden add-ons."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="pkg-premium">
+      <div class="panel-header">
+        <div class="panel-tag">Package</div>
+        <div class="panel-title">Premium Package</div>
+        <div class="panel-sub">The most common close. Combines the main job with a panel evaluation and one smart upgrade.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card featured-pkg">
+          <div class="card-label">What's Included <span class="badge badge-gold" style="margin-left:6px">Most Popular</span></div>
+          <div class="pkg-body" style="padding:0; margin-top:8px">
+            <div class="pkg-item"><span class="pkg-check">✓</span> Everything in Essential</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Full panel evaluation + safety report</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Solar-ready breaker slot added</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Smart switch or GFCI upgrade (1 room)</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> 2-year workmanship warranty</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Priority scheduling on future calls</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-label">Best For</div>
+          <p>Homeowners who are remodeling, buying a home, or just had a problem. They're already spending money — frame the upgrade as protection.</p>
+          <br/>
+          <div class="card-label" style="margin-top:8px">Value Framing</div>
+          <p>The solar-ready slot alone saves $800+ if they ever add solar. The panel report gives them documentation for their records.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-panel" id="pkg-complete">
+      <div class="panel-header">
+        <div class="panel-tag">Package</div>
+        <div class="panel-title">Complete Home Package</div>
+        <div class="panel-sub">Full-house electrical health. Best for older homes, new buyers, or homeowners preparing to sell or refinance.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">What's Included</div>
+          <div class="pkg-body" style="padding:0; margin-top:8px">
+            <div class="pkg-item"><span class="pkg-check">✓</span> Everything in Premium</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> 200A panel upgrade (if needed)</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> All GFCI/AFCI updated to current code</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Smoke/CO detector placement reviewed</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> Written code-compliance report</div>
+            <div class="pkg-item"><span class="pkg-check">✓</span> 3-year workmanship warranty</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-label">The Pitch</div>
+          <p>This is the "done once, done right" package. Ideal before listing a home, after a home inspection flags electrical issues, or for anyone who wants full peace of mind.</p>
+          <br/>
+          <div class="callout" style="margin-top:8px">
+            <div class="callout-label">The Number That Sells It</div>
+            <p>Home inspection electrical issues cause 23% of real estate deals to fall through or reprice. This package eliminates that risk entirely.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-panel" id="pkg-present">
+      <div class="panel-header">
+        <div class="panel-tag">Strategy</div>
+        <div class="panel-title">How to Present Packages</div>
+        <div class="panel-sub">Always present three options. Always recommend the middle. Never lead with price — lead with outcome.</div>
+      </div>
+
+      <div class="section-divider">The 3-Option Rule</div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-label">Option 1 — Anchor Low</div>
+          <p>Essential package. Exists to make middle seem reasonable. Some customers take it — that's fine.</p>
+        </div>
+        <div class="card featured-pkg">
+          <div class="card-label">Option 2 — Recommended ⭐</div>
+          <p>Premium package. This is where you want them. Best value, best margin, most complete job.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Option 3 — Anchor High</div>
+          <p>Complete Home. Makes middle look affordable. Occasionally closes — great when it does.</p>
+        </div>
+      </div>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ How to Introduce Options</div>
+        <p>"I put together three ways we can approach this. The first gets the job done. The second is what I'd recommend for a home like yours. The third is for people who want everything done at once. Let me walk you through what's different."</p>
+      </div>
+    </div>
+
+    <!-- ═══ PRICING ═══ -->
+
+    <div class="content-panel" id="price-panels">
+      <div class="panel-header">
+        <div class="panel-tag">Pricing Reference</div>
+        <div class="panel-title">Panel Jobs</div>
+        <div class="panel-sub">Reference ranges for quoting. Always do a site assessment before giving a firm number.</div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-label">Price Ranges</div>
+        <div class="price-row"><span class="price-row-label">100A → 200A Upgrade (standard)</span><span class="price-row-val">$2,200–$3,800</span></div>
+        <div class="price-row"><span class="price-row-label">200A Upgrade + Meter Base</span><span class="price-row-val">$3,500–$5,500</span></div>
+        <div class="price-row"><span class="price-row-label">Subpanel Install (100A)</span><span class="price-row-val">$1,200–$2,200</span></div>
+        <div class="price-row"><span class="price-row-label">SPAN Smart Panel (full install)</span><span class="price-row-val">$4,500–$7,500</span></div>
+        <div class="price-row"><span class="price-row-label">Solar-Ready Add-On (during upgrade)</span><span class="price-row-val">$300–$600</span></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">📌 What Affects Cost</div>
+        <ul>
+          <li>Distance from panel to meter — long runs = more conduit + labor</li>
+          <li>Need to move or replace meter base (utility coordination)</li>
+          <li>Overhead vs. underground service entrance</li>
+          <li>Access difficulty (finished walls, crawl space, attic)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-panel" id="price-ev">
+      <div class="panel-header">
+        <div class="panel-tag">Pricing Reference</div>
+        <div class="panel-title">EV Charger Jobs</div>
+        <div class="panel-sub">Quick-close jobs with great upsell potential. Always check panel capacity first.</div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-label">Price Ranges</div>
+        <div class="price-row"><span class="price-row-label">NEMA 14-50 outlet (garage, close to panel)</span><span class="price-row-val">$400–$700</span></div>
+        <div class="price-row"><span class="price-row-label">Hardwired Level 2 EVSE (close run)</span><span class="price-row-val">$600–$1,100</span></div>
+        <div class="price-row"><span class="price-row-label">Hardwired Level 2 EVSE (long run)</span><span class="price-row-val">$900–$1,800</span></div>
+        <div class="price-row"><span class="price-row-label">EV charger + panel upgrade (bundle)</span><span class="price-row-val">$2,800–$4,500</span></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">⚡ Upsell Trigger</div>
+        <p>If the panel is near capacity, present the bundle before quoting EV alone. "I want to make sure we don't put you in a situation where you have a charger but can't run it without tripping breakers."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="price-rewire">
+      <div class="panel-header">
+        <div class="panel-tag">Pricing Reference</div>
+        <div class="panel-title">Rewire Jobs</div>
+        <div class="panel-sub">Highest-ticket jobs. Scope varies significantly — always walk the full home before quoting.</div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-label">Price Ranges</div>
+        <div class="price-row"><span class="price-row-label">Partial rewire (1–2 rooms)</span><span class="price-row-val">$1,800–$3,500</span></div>
+        <div class="price-row"><span class="price-row-label">Full rewire (1,200–1,800 sq ft)</span><span class="price-row-val">$8,000–$14,000</span></div>
+        <div class="price-row"><span class="price-row-label">Full rewire (2,000–3,000 sq ft)</span><span class="price-row-val">$12,000–$22,000</span></div>
+        <div class="price-row"><span class="price-row-label">Aluminum wiring remediation</span><span class="price-row-val">$4,000–$10,000</span></div>
+        <div class="price-row"><span class="price-row-label">Rewire + full panel upgrade bundle</span><span class="price-row-val">$10,000–$25,000</span></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">💡 Quoting Notes</div>
+        <ul>
+          <li>Always specify what's included — number of circuits, outlets, switches</li>
+          <li>Note access conditions — open walls vs. finished walls changes labor by 30–50%</li>
+          <li>Give a range, not a number, until you've walked every room</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-panel" id="price-defend">
+      <div class="panel-header">
+        <div class="panel-tag">Strategy</div>
+        <div class="panel-title">Defending Your Price</div>
+        <div class="panel-sub">Never apologize for your price. Explain value. Reframe the comparison. Own your position.</div>
+      </div>
+
+      <div class="section-divider">The Value Stack</div>
+      <div class="callout">
+        <div class="callout-label">When They Say "You're More Expensive"</div>
+        <p>Remind them what's in the price: permit pulled, inspection passed, written warranty, owner on the job personally, no subcontractors, no surprises.</p>
+        <br/>
+        <p>Then ask: <em>"Does the other quote include pulling the permit? Who specifically is doing the work?"</em></p>
+      </div>
+
+      <div class="steal-line">
+        <div class="steal-label">✂️ The Risk Reframe</div>
+        <p>"The electrician who's $800 cheaper — if something goes wrong, you're the one paying to fix it. With us, you have a warranty and documented inspection. That's the difference."</p>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ The Cost of Delay</div>
+        <p>"I get it. But if your panel fails before we get back on the calendar, that emergency call — if you can even find someone — is going to cost twice this quote. And there's no permit, no warranty."</p>
+      </div>
+    </div>
+
+    <!-- ═══ OBJECTIONS ═══ -->
+
+    <div class="content-panel" id="obj-price">
+      <div class="panel-header">
+        <div class="panel-tag">Objection</div>
+        <div class="panel-title">"It's Too Expensive"</div>
+        <div class="panel-sub">The most common stall. Usually means they haven't been sold on value — not that they can't afford it.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">Compared to what?</div>
+        <div class="objection-a">Ask this directly — gently. <strong>"Compared to what you were expecting, or compared to another quote?"</strong> The answer tells you everything. If it's vs. expectation, explain the full scope. If it's vs. another quote, ask what that quote includes.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">Can you come down on the price?</div>
+        <div class="objection-a">Never discount without removing scope. <strong>"What I can do is look at which parts of the job are most urgent and build a phased approach — but I don't want to cut scope that's there for your safety. What's driving the budget concern?"</strong></div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ The True Cost Frame</div>
+        <p>"I understand. But let me ask — what does it cost if this job isn't done, or isn't done right? A panel fire, a failed home inspection, a voided insurance claim — those numbers are a lot bigger than what I'm quoting you."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="obj-quote">
+      <div class="panel-header">
+        <div class="panel-tag">Objection</div>
+        <div class="panel-title">"I Want to Get Other Quotes"</div>
+        <div class="panel-sub">Legitimate — but usually a delay tactic. Respect the process, set the standard, close before they leave.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">I need to get a couple more quotes first.</div>
+        <div class="objection-a"><strong>"Absolutely — that's smart."</strong> Then: <strong>"When you talk to them, ask if they pull their own permits, who specifically will be on the job, and if the quote is all-in or if there'll be add-ons. That'll help you compare apples to apples."</strong> You're planting questions they'll ask that most competitors can't answer well.</div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ The Soft Pre-Close</div>
+        <p>"If you do the quotes and we're aligned on price, is there any other reason you wouldn't want to move forward with us? I want to make sure I'm not missing something."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="obj-think">
+      <div class="panel-header">
+        <div class="panel-tag">Objection</div>
+        <div class="panel-title">"I Need to Think About It"</div>
+        <div class="panel-sub">Almost always means something else. Find the real objection — don't just accept it and leave.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">I need some time to think it over.</div>
+        <div class="objection-a"><strong>"Of course — I respect that."</strong> Then: <strong>"Can I ask what specifically you'd be thinking through? I want to make sure you have everything you need to make a good decision — and if there's something I haven't answered well, I'd rather address it now."</strong></div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ The Urgency Closer (use sparingly)</div>
+        <p>"I want to be straight with you — my schedule fills up about 3 weeks out right now. If you think you want to move forward, getting on the calendar today means we can actually hit your timeline."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="obj-permit">
+      <div class="panel-header">
+        <div class="panel-tag">Objection</div>
+        <div class="panel-title">"Can You Skip the Permit?"</div>
+        <div class="panel-sub">Never. Hold the line firmly — and explain why it's in their best interest, not just a rule.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">I don't want the hassle. Can we just skip the permit?</div>
+        <div class="objection-a">Firm but empathetic: <strong>"I understand the instinct, but I can't do that — and honestly, you wouldn't want me to."</strong> Then: <strong>"Here's why this matters for you specifically: if you sell this house, refinance, or file an insurance claim and there's unpermitted work — you're the one with the problem, not me. The permit is protection for you."</strong></div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ The Non-Negotiable Line</div>
+        <p>"This is actually non-negotiable for us — and I want you to know that's a feature, not a bug. Every customer we have can point to a permit and say the work was inspected. That's the standard we hold."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="obj-spouse">
+      <div class="panel-header">
+        <div class="panel-tag">Objection</div>
+        <div class="panel-title">"I Need to Ask My Spouse"</div>
+        <div class="panel-sub">Legitimate — but set the follow-up before you leave. Don't let this be a soft no.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">I have to run this by my wife/husband first.</div>
+        <div class="objection-a"><strong>"Of course — this is a big decision and it should be a joint one."</strong> Then immediately: <strong>"Are they available right now? I'm happy to do a quick call or I can come back this evening. I want to make sure they have the same information you do so the conversation goes smoothly."</strong></div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ Set the Follow-Up</div>
+        <p>"What's a good time tomorrow that you'd both be available? I'd rather spend 15 minutes now than have you try to explain all of this — there's a lot of detail that's easier for me to walk through."</p>
+      </div>
+    </div>
+
+    <div class="content-panel" id="obj-diy">
+      <div class="panel-header">
+        <div class="panel-tag">Objection</div>
+        <div class="panel-title">"My Brother-in-Law Can Do It"</div>
+        <div class="panel-sub">Unlicensed work. Respectfully plant doubt without attacking anyone.</div>
+      </div>
+      <div class="objection-block">
+        <div class="objection-q">My brother-in-law does electrical — I'll just have him do it.</div>
+        <div class="objection-a">Smile: <strong>"That's great if he's licensed and insured."</strong> Then: <strong>"The only question I'd ask is whether he can pull the permit and pass inspection — because without that, the work can affect your insurance, your home sale, and potentially your warranty on any appliances connected to that circuit. Is he set up to do it that way?"</strong></div>
+      </div>
+      <div class="steal-line">
+        <div class="steal-label">✂️ The Relationship Angle</div>
+        <p>"I always tell people — the risk with having a friend or family member do this kind of work is that if something goes wrong, it creates a problem in the relationship. With us, if anything doesn't perform, it's our problem to fix."</p>
+      </div>
+    </div>
+
+    <!-- ═══ CLOSE SCRIPTS ═══ -->
+
+    <div class="content-panel" id="close-call">
+      <div class="panel-header">
+        <div class="panel-tag">Script</div>
+        <div class="panel-title">First Call Script</div>
+        <div class="panel-sub">Goal: qualify the job, set the site visit, build trust fast. Don't quote on the phone.</div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">1</div>
+        <div class="script-body">
+          <div class="script-step-label">Open + Qualify</div>
+          <div class="script-step-text"><em>"Thanks for calling Mag Electric — this is Matthew. What's going on with your electrical today?"</em><br/>Let them talk. Take notes. Ask clarifying questions.</div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">2</div>
+        <div class="script-body">
+          <div class="script-step-label">Establish Authority</div>
+          <div class="script-step-text"><em>"I want to make sure I can actually help you before we go any further. Can you tell me a bit more about the home — how old is it, and when was the panel last looked at?"</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">3</div>
+        <div class="script-body">
+          <div class="script-step-label">Set the Visit</div>
+          <div class="script-step-text"><em>"I never quote over the phone on something like this — I want to actually see what we're working with so I'm not guessing. I can come out [day/time] and give you a written estimate at no charge. Does that work?"</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">4</div>
+        <div class="script-body">
+          <div class="script-step-label">Set Expectations</div>
+          <div class="script-step-text"><em>"I'll walk through everything, give you a clear picture of what the job involves, and send you a written estimate you can actually read. No pressure, no hourly surprises."</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-panel" id="close-site">
+      <div class="panel-header">
+        <div class="panel-tag">Script</div>
+        <div class="panel-title">Site Visit Script</div>
+        <div class="panel-sub">Goal: assess, build trust, set up the quote. Find the real scope — including problems they don't know about yet.</div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">1</div>
+        <div class="script-body">
+          <div class="script-step-label">Arrive + Connect</div>
+          <div class="script-step-text"><em>"Thanks for having me out. Before we look at anything — what's most important to you with this project? Is it getting it done quickly, making sure it's done right, or working within a specific budget?"</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">2</div>
+        <div class="script-body">
+          <div class="script-step-label">Walk the Job</div>
+          <div class="script-step-text">Inspect the panel, note the age, check for aluminum wiring indicators, count circuits. Walk the area where work is needed. Ask questions — don't just look around silently.</div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">3</div>
+        <div class="script-body">
+          <div class="script-step-label">Educate + Surface Issues</div>
+          <div class="script-step-text"><em>"I want to show you something — this [panel / wiring / outlet] is something we'd want to address. It's not an emergency today, but here's what it means if it's left alone..."</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">4</div>
+        <div class="script-body">
+          <div class="script-step-label">Set the Quote Close</div>
+          <div class="script-step-text"><em>"I'll get you a written estimate by [time]. I'll give you one option for exactly what we talked about, and one option that includes [the upsell] — so you can see what both look like. Sound good?"</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-panel" id="close-quote">
+      <div class="panel-header">
+        <div class="panel-tag">Script</div>
+        <div class="panel-title">Quote Delivery Script</div>
+        <div class="panel-sub">Goal: present confidently, answer questions, close in the same conversation. Never just email a number.</div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">1</div>
+        <div class="script-body">
+          <div class="script-step-label">Frame Before the Number</div>
+          <div class="script-step-text"><em>"Before I give you the number, I want to walk you through what's included — because it's easy to look at two quotes side by side and not realize you're looking at two completely different jobs."</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">2</div>
+        <div class="script-body">
+          <div class="script-step-label">Walk the Scope</div>
+          <div class="script-step-text">Describe every line item. Use plain language. Explain <em>why</em> each thing is in the scope. Mention permit and inspection explicitly.</div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">3</div>
+        <div class="script-body">
+          <div class="script-step-label">Deliver the Number Confidently</div>
+          <div class="script-step-text"><em>"All of that — the [scope summary], permit, inspection, and warranty — comes to [price]. That's the full number."</em> Then stop talking. Let them respond.</div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">4</div>
+        <div class="script-body">
+          <div class="script-step-label">The Soft Close</div>
+          <div class="script-step-text"><em>"Does this feel like the right direction? I can usually get you on the schedule within [X] weeks. If you want to move forward, I just need a signature on the quote."</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-panel" id="close-followup">
+      <div class="panel-header">
+        <div class="panel-tag">Script</div>
+        <div class="panel-title">Follow-Up Script</div>
+        <div class="panel-sub">Goal: re-engage without being pushy. Add value in the follow-up. One call, one text — then move on.</div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">1</div>
+        <div class="script-body">
+          <div class="script-step-label">The 48-Hour Text</div>
+          <div class="script-step-text"><em>"Hey [name] — Matthew from Mag Electric. Just checking in on the quote I sent over. Happy to answer any questions or adjust scope if needed. No pressure — just want to make sure you have what you need."</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">2</div>
+        <div class="script-body">
+          <div class="script-step-label">The 7-Day Call (if no response)</div>
+          <div class="script-step-text"><em>"Hi [name] — this is Matthew Gil from Mag Electric. I sent a quote last week and just wanted to make sure it got to you okay. My schedule is filling up for [month] — wanted to give you first shot at the open slots if you're still looking to move forward."</em></div>
+        </div>
+      </div>
+      <div class="script-step">
+        <div class="script-num">3</div>
+        <div class="script-body">
+          <div class="script-step-label">The Permission to Close (or move on)</div>
+          <div class="script-step-text"><em>"I don't want to keep bothering you — totally understand if the timing isn't right. If you do decide to move forward at some point, just reach out and I'll take care of you. Is there anything I can answer before I let you go?"</em></div>
+        </div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">📌 Follow-Up Rules</div>
+        <ul>
+          <li>Max 3 touches after quote delivery (text → call → final call)</li>
+          <li>Always add value — new info, schedule update, seasonal reminder</li>
+          <li>Never ask "have you made a decision?" — ask "is there anything I can clarify?"</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const tabSidebars = {
+    services: 'sb-services',
+    packages: 'sb-packages',
+    pricing:  'sb-pricing',
+    objections: 'sb-objections',
+    close:    'sb-close'
+  };
+
+  const tabDefaults = {
+    services:   'panel-upgrade',
+    packages:   'pkg-essential',
+    pricing:    'price-panels',
+    objections: 'obj-price',
+    close:      'close-call'
+  };
+
+  function switchTab(tabId, btn) {
+    // Update tab buttons
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show/hide sidebars
+    Object.values(tabSidebars).forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    document.getElementById(tabSidebars[tabId]).style.display = 'block';
+
+    // Reset sidebar active states
+    document.querySelectorAll(`#${tabSidebars[tabId]} .sidebar-btn`).forEach((b, i) => {
+      b.classList.toggle('active', i === 0);
+    });
+
+    // Show default content for this tab
+    document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(tabDefaults[tabId]).classList.add('active');
+  }
+
+  function switchContent(contentId, btn) {
+    // Update sidebar active
+    const parentGroup = btn.closest('.sidebar-group');
+    parentGroup.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show content
+    document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(contentId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
