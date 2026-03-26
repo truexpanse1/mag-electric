@@ -316,13 +316,15 @@
         <p>Real projects. Real homes. Real craftsmanship across the Central Coast and Central Valley.</p>
       </div>
 
+      <!-- Filter pills — mirrored from the Services section -->
       <div class="gallery-filters">
         <button class="gallery-filter active" data-filter="all">All Projects</button>
         <button class="gallery-filter" data-filter="solar">Solar &amp; Enphase</button>
-        <button class="gallery-filter" data-filter="ev">EV &amp; Battery</button>
         <button class="gallery-filter" data-filter="panels">Panel Upgrades</button>
-        <button class="gallery-filter" data-filter="commercial">Commercial</button>
+        <button class="gallery-filter" data-filter="ev">EV &amp; Battery</button>
+        <button class="gallery-filter" data-filter="new-construction">New Construction</button>
         <button class="gallery-filter" data-filter="remodels">Remodels &amp; Lighting</button>
+        <button class="gallery-filter" data-filter="commercial">Commercial</button>
       </div>
     </div>
 
@@ -365,7 +367,12 @@
     <div class="container">
       <div class="gallery-card-grid">
 
-        <!-- ── SOLAR & ENPHASE ── -->
+        <!-- ══════════════════════════════════
+             SOLAR & ENPHASE
+             solar_sunset_commercial, solarPanels_1-8,
+             enphase_panels 1-3, enphase_panels_4
+             ══════════════════════════════════ -->
+
         <div class="gallery-card" data-category="solar">
           <div class="gallery-card-img">
             <img src="images/solar_sunset_commercial.jpg" alt="Commercial solar installation at sunset" loading="lazy" />
@@ -498,19 +505,23 @@
           </div>
         </div>
 
-        <!-- ── EV & BATTERY ── -->
-        <div class="gallery-card" data-category="ev">
+        <div class="gallery-card" data-category="solar">
           <div class="gallery-card-img">
-            <img src="images/testla_1.jpg" alt="Tesla Wall Connector installation" loading="lazy" />
+            <img src="images/enphase_panels_4.jpg" alt="Solar-ready panel integration for Enphase system" loading="lazy" />
           </div>
           <div class="gallery-card-body">
-            <span class="gallery-card-cat">EV &amp; Battery</span>
-            <h4 class="gallery-card-title">Tesla Wall Connector Install</h4>
-            <p class="gallery-card-desc">Tesla Wall Connector mounted, dedicated 60A circuit run, permit pulled and inspection passed &mdash; ready to charge from day one.</p>
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Solar-Ready Panel Integration</h4>
+            <p class="gallery-card-desc">Panel upgraded and backfeed-ready for Enphase solar. No rewiring required when the panels go up &mdash; built right from the start.</p>
           </div>
         </div>
 
-        <!-- ── PANEL UPGRADES ── -->
+        <!-- ══════════════════════════════════
+             PANEL UPGRADES
+             panel_wiring_a, mag_electrical_panel 1-4,
+             meterBox_4, meterBox_4_b, mag_meter
+             ══════════════════════════════════ -->
+
         <div class="gallery-card" data-category="panels">
           <div class="gallery-card-img">
             <img src="images/panel_wiring_a.jpg" alt="Precision electrical panel wiring" loading="lazy" />
@@ -599,18 +610,70 @@
           </div>
         </div>
 
-        <div class="gallery-card" data-category="panels">
+        <!-- ══════════════════════════════════
+             EV & BATTERY
+             testla_1
+             ══════════════════════════════════ -->
+
+        <div class="gallery-card" data-category="ev">
           <div class="gallery-card-img">
-            <img src="images/enphase_panels_4.jpg" alt="Panel upgraded for solar integration" loading="lazy" />
+            <img src="images/testla_1.jpg" alt="Tesla Wall Connector installation" loading="lazy" />
           </div>
           <div class="gallery-card-body">
-            <span class="gallery-card-cat">Panel Upgrades</span>
-            <h4 class="gallery-card-title">Solar-Ready Panel Integration</h4>
-            <p class="gallery-card-desc">Existing panel upgraded and backfeed-ready for solar. No rewiring required when the panels go up.</p>
+            <span class="gallery-card-cat">EV &amp; Battery</span>
+            <h4 class="gallery-card-title">Tesla Wall Connector Install</h4>
+            <p class="gallery-card-desc">Tesla Wall Connector mounted, dedicated 60A circuit run, permit pulled and inspection passed &mdash; ready to charge from day one.</p>
           </div>
         </div>
 
-        <!-- ── COMMERCIAL ── -->
+        <!-- ══════════════════════════════════
+             ADU & NEW CONSTRUCTION
+             wall_framing
+             ══════════════════════════════════ -->
+
+        <div class="gallery-card" data-category="new-construction">
+          <div class="gallery-card-img">
+            <img src="images/wall_framing.jpg" alt="New construction electrical rough-in during framing" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">ADU &amp; New Construction</span>
+            <h4 class="gallery-card-title">New Construction Rough-In</h4>
+            <p class="gallery-card-desc">Electrical rough-in during the framing stage &mdash; panels, circuits, and conduit laid out right before the walls close. We work alongside your GC from day one.</p>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             REMODELS & LIGHTING
+             kitchen_remodel_1, kitchen_remodel_2
+             ══════════════════════════════════ -->
+
+        <div class="gallery-card" data-category="remodels">
+          <div class="gallery-card-img">
+            <img src="images/kitchen_remodel_1.jpg" alt="Kitchen electrical remodel" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
+            <h4 class="gallery-card-title">Kitchen Remodel Wiring</h4>
+            <p class="gallery-card-desc">New circuits, GFCI protection, and updated panel connections for a full kitchen remodel &mdash; rough-in to final inspection.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="remodels">
+          <div class="gallery-card-img">
+            <img src="images/kitchen_remodel_2.jpg" alt="Kitchen lighting design and installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
+            <h4 class="gallery-card-title">Kitchen Lighting Design</h4>
+            <p class="gallery-card-desc">New ceiling layout, dimmable LED recessed lighting &mdash; designed for the space, wired to code, finished on schedule.</p>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             COMMERCIAL
+             commercial_76_station, mag_on_job, mag_team1
+             ══════════════════════════════════ -->
+
         <div class="gallery-card" data-category="commercial">
           <div class="gallery-card-img">
             <img src="images/commercial_76_station.jpg" alt="Commercial electrical work at 76 gas station" loading="lazy" />
@@ -641,40 +704,6 @@
             <span class="gallery-card-cat">Commercial</span>
             <h4 class="gallery-card-title">Mag Electric Crew</h4>
             <p class="gallery-card-desc">The team behind every Mag Electric project &mdash; licensed, experienced, and committed to quality on every single job.</p>
-          </div>
-        </div>
-
-        <!-- ── REMODELS & LIGHTING ── -->
-        <div class="gallery-card" data-category="remodels">
-          <div class="gallery-card-img">
-            <img src="images/kitchen_remodel_1.jpg" alt="Kitchen electrical remodel" loading="lazy" />
-          </div>
-          <div class="gallery-card-body">
-            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
-            <h4 class="gallery-card-title">Kitchen Remodel Wiring</h4>
-            <p class="gallery-card-desc">New circuits, GFCI protection, and updated panel connections for a full kitchen remodel &mdash; rough-in to final inspection.</p>
-          </div>
-        </div>
-
-        <div class="gallery-card" data-category="remodels">
-          <div class="gallery-card-img">
-            <img src="images/kitchen_remodel_2.jpg" alt="Kitchen lighting design and installation" loading="lazy" />
-          </div>
-          <div class="gallery-card-body">
-            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
-            <h4 class="gallery-card-title">Kitchen Lighting Design</h4>
-            <p class="gallery-card-desc">New ceiling layout, dimmable LED recessed lighting &mdash; designed for the space, wired to code, finished on schedule.</p>
-          </div>
-        </div>
-
-        <div class="gallery-card" data-category="remodels">
-          <div class="gallery-card-img">
-            <img src="images/wall_framing.jpg" alt="New construction electrical rough-in" loading="lazy" />
-          </div>
-          <div class="gallery-card-body">
-            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
-            <h4 class="gallery-card-title">New Construction Rough-In</h4>
-            <p class="gallery-card-desc">Rough-in electrical during the framing stage &mdash; panels, circuits, and conduit laid out right before the walls close.</p>
           </div>
         </div>
 
