@@ -67,6 +67,13 @@
     catch (e) { return []; }
   }
 
+  function updateNavVisibility() {
+    var total = currentImages.length;
+    /* Hide prev at first image, hide next at last image; hide both if only one image */
+    lbPrev.style.display = (total > 1 && lbIndex > 0)            ? '' : 'none';
+    lbNext.style.display = (total > 1 && lbIndex < total - 1)    ? '' : 'none';
+  }
+
   function renderLb() {
     var img = currentImages[lbIndex];
     if (!img) return;
@@ -74,14 +81,14 @@
     lbImg.alt           = img.title || '';
     lbTitle.textContent = img.title || '';
     lbCat.textContent   = img.cat   || '';
-    lbPrev.style.display = currentImages.length > 1 ? '' : 'none';
-    lbNext.style.display = currentImages.length > 1 ? '' : 'none';
+    updateNavVisibility();
   }
 
   function openLb(groupEl, idx) {
     currentImages = parseImages(groupEl);
     if (!currentImages.length) return;
-    lbIndex = ((idx || 0) % currentImages.length + currentImages.length) % currentImages.length;
+    /* Clamp idx to valid range — no wrapping */
+    lbIndex = Math.max(0, Math.min(idx || 0, currentImages.length - 1));
     renderLb();
     lb.classList.add('lb-open');
     document.body.style.overflow = 'hidden';
@@ -94,7 +101,9 @@
   }
 
   function navLb(dir) {
-    lbIndex = ((lbIndex + dir) % currentImages.length + currentImages.length) % currentImages.length;
+    var next = lbIndex + dir;
+    if (next < 0 || next >= currentImages.length) return; /* already at end, do nothing */
+    lbIndex = next;
     renderLb();
   }
 
@@ -123,7 +132,7 @@
     }
   });
 
-  /* EV featured section image -> single-image lightbox */
+  /* EV featured section image -> single-image lightbox (no nav arrows needed) */
   if (evSection) {
     var evImgEl = evSection.querySelector('.gallery-ev-img img');
     if (evImgEl) {
