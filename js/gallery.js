@@ -7,17 +7,6 @@
 
   if (!filters.length) return;
 
-  /* -- Stagger entrance via IntersectionObserver -- */
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('g-in');
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
-
-  groups.forEach(function (g) { io.observe(g); });
-
   /* -- Filter -- */
   var FADE_MS = 260;
 
@@ -38,6 +27,9 @@
       }
     }, FADE_MS);
   }
+
+  /* Show all groups on load */
+  groups.forEach(function (g) { g.classList.add('g-in'); });
 
   filters.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -116,7 +108,7 @@
     openLb(groupEl, parseInt(trigger.dataset.groupIdx || 0, 10));
   });
 
-  /* Keyboard: Enter/Space on hero/thumb, arrows + Escape in lightbox */
+  /* Keyboard */
   document.addEventListener('keydown', function (e) {
     if (lb.classList.contains('lb-open')) {
       if (e.key === 'Escape')     { closeLb(); return; }
@@ -124,20 +116,20 @@
       if (e.key === 'ArrowRight') { navLb(1);  return; }
     }
     if (e.key === 'Enter' || e.key === ' ') {
-      var trigger = e.target.closest('[data-group-idx]');
+      var trigger = document.activeElement && document.activeElement.closest('[data-group-idx]');
       if (!trigger) return;
       var groupEl = trigger.closest('.gallery-group');
       if (groupEl) openLb(groupEl, parseInt(trigger.dataset.groupIdx, 10));
     }
   });
 
-  /* EV featured section image -> open single-image lightbox */
+  /* EV featured section image -> single-image lightbox */
   if (evSection) {
-    var evImg = evSection.querySelector('.gallery-ev-img img');
-    if (evImg) {
-      evImg.parentElement.style.cursor = 'pointer';
-      evImg.parentElement.addEventListener('click', function () {
-        currentImages = [{ src: evImg.src, title: 'Tesla Wall Connector Install', cat: 'EV & Battery' }];
+    var evImgEl = evSection.querySelector('.gallery-ev-img img');
+    if (evImgEl) {
+      evImgEl.parentElement.style.cursor = 'pointer';
+      evImgEl.parentElement.addEventListener('click', function () {
+        currentImages = [{ src: evImgEl.src, title: 'Tesla Wall Connector Install', cat: 'EV & Battery' }];
         lbIndex = 0;
         renderLb();
         lb.classList.add('lb-open');
