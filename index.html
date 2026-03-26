@@ -487,6 +487,29 @@
           </div>
         </div>
 
+        <div class="gallery-card" data-category="solar">
+          <div class="gallery-card-img">
+            <img src="images/enphase_panels_3.jpg" alt="Enphase solar system build-out" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Solar &amp; Enphase</span>
+            <h4 class="gallery-card-title">Enphase Solar Build-Out</h4>
+            <p class="gallery-card-desc">Full Enphase system from racking to commissioning &mdash; microinverters paired, monitoring live, and grid-tie approved.</p>
+          </div>
+        </div>
+
+        <!-- ── EV & BATTERY ── -->
+        <div class="gallery-card" data-category="ev">
+          <div class="gallery-card-img">
+            <img src="images/testla_1.jpg" alt="Tesla Wall Connector installation" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">EV &amp; Battery</span>
+            <h4 class="gallery-card-title">Tesla Wall Connector Install</h4>
+            <p class="gallery-card-desc">Tesla Wall Connector mounted, dedicated 60A circuit run, permit pulled and inspection passed &mdash; ready to charge from day one.</p>
+          </div>
+        </div>
+
         <!-- ── PANEL UPGRADES ── -->
         <div class="gallery-card" data-category="panels">
           <div class="gallery-card-img">
@@ -622,6 +645,17 @@
         </div>
 
         <!-- ── REMODELS & LIGHTING ── -->
+        <div class="gallery-card" data-category="remodels">
+          <div class="gallery-card-img">
+            <img src="images/kitchen_remodel_1.jpg" alt="Kitchen electrical remodel" loading="lazy" />
+          </div>
+          <div class="gallery-card-body">
+            <span class="gallery-card-cat">Remodels &amp; Lighting</span>
+            <h4 class="gallery-card-title">Kitchen Remodel Wiring</h4>
+            <p class="gallery-card-desc">New circuits, GFCI protection, and updated panel connections for a full kitchen remodel &mdash; rough-in to final inspection.</p>
+          </div>
+        </div>
+
         <div class="gallery-card" data-category="remodels">
           <div class="gallery-card-img">
             <img src="images/kitchen_remodel_2.jpg" alt="Kitchen lighting design and installation" loading="lazy" />
@@ -791,6 +825,26 @@
       </div>
     </div>
   </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="gallery-lightbox" class="lb-overlay" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button id="lb-close" class="lb-close" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button id="lb-prev" class="lb-nav lb-prev" aria-label="Previous photo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="lb-content">
+      <img id="lb-img" src="" alt="" />
+      <div class="lb-caption">
+        <span id="lb-cat" class="lb-cat-tag"></span>
+        <p id="lb-title" class="lb-title"></p>
+      </div>
+    </div>
+    <button id="lb-next" class="lb-nav lb-next" aria-label="Next photo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
 
   <script src="js/nav.js"></script>
   <script src="js/gallery.js"></script>
