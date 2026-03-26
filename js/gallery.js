@@ -2,68 +2,61 @@
   'use strict';
 
   var filters   = document.querySelectorAll('.gallery-filter');
-  var cards     = document.querySelectorAll('.gallery-card');
+  var groups    = document.querySelectorAll('.gallery-group');
   var evSection = document.getElementById('gallery-ev-section');
 
   if (!filters.length) return;
 
-  /* ── Stagger entrance via IntersectionObserver ── */
+  /* -- Stagger entrance via IntersectionObserver -- */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-      var card  = entry.target;
-      var delay = parseInt(card.dataset.enterDelay || 0, 10);
-      setTimeout(function () { card.classList.add('g-in'); }, delay);
-      io.unobserve(card);
+      entry.target.classList.add('g-in');
+      io.unobserve(entry.target);
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 
-  cards.forEach(function (card, i) {
-    card.dataset.enterDelay = Math.min(i, 9) * 55;
-    io.observe(card);
-  });
+  groups.forEach(function (g) { io.observe(g); });
 
-  /* ── Filter helpers ── */
+  /* -- Filter -- */
   var FADE_MS = 260;
 
-  function showCard(card) {
-    card.classList.remove('g-hidden', 'g-out');
+  function showGroup(g) {
+    g.classList.remove('g-hidden', 'g-out');
     requestAnimationFrame(function () {
-      requestAnimationFrame(function () { card.classList.add('g-in'); });
+      requestAnimationFrame(function () { g.classList.add('g-in'); });
     });
   }
 
-  function hideCard(card) {
-    card.classList.remove('g-in');
-    card.classList.add('g-out');
+  function hideGroup(g) {
+    g.classList.remove('g-in');
+    g.classList.add('g-out');
     setTimeout(function () {
-      if (card.classList.contains('g-out')) {
-        card.classList.add('g-hidden');
-        card.classList.remove('g-out');
+      if (g.classList.contains('g-out')) {
+        g.classList.add('g-hidden');
+        g.classList.remove('g-out');
       }
     }, FADE_MS);
   }
-
-  var currentFilter = 'all';
 
   filters.forEach(function (btn) {
     btn.addEventListener('click', function () {
       filters.forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
+      var filter = btn.dataset.filter;
 
-      cards.forEach(function (card) {
-        var matches = currentFilter === 'all' || card.dataset.category === currentFilter;
-        if (matches) showCard(card); else hideCard(card);
+      groups.forEach(function (g) {
+        var match = filter === 'all' || g.dataset.group === filter;
+        if (match) showGroup(g); else hideGroup(g);
       });
 
       if (evSection) {
-        evSection.style.display = (currentFilter === 'all' || currentFilter === 'ev') ? '' : 'none';
+        evSection.style.display = (filter === 'all' || filter === 'ev') ? '' : 'none';
       }
     });
   });
 
-  /* ── Lightbox ── */
+  /* -- Lightbox -- */
   var lb      = document.getElementById('gallery-lightbox');
   var lbImg   = document.getElementById('lb-img');
   var lbTitle = document.getElementById('lb-title');
@@ -74,59 +67,87 @@
 
   if (!lb) return;
 
+  var currentImages = [];
   var lbIndex = 0;
 
-  function visibleCards() {
-    return Array.from(cards).filter(function (c) {
-      return !c.classList.contains('g-hidden') && !c.classList.contains('g-out');
-    });
+  function parseImages(groupEl) {
+    try { return JSON.parse(groupEl.dataset.images || '[]'); }
+    catch (e) { return []; }
   }
 
-  function openLightbox(idx) {
-    var visible = visibleCards();
-    if (!visible.length) return;
-    lbIndex = ((idx % visible.length) + visible.length) % visible.length;
-    var card  = visible[lbIndex];
-    var img   = card.querySelector('.gallery-card-img img');
-    var title = card.querySelector('.gallery-card-title');
-    var cat   = card.querySelector('.gallery-card-cat');
-    lbImg.src           = img   ? img.src   : '';
-    lbImg.alt           = img   ? img.alt   : '';
-    lbTitle.textContent = title ? title.textContent : '';
-    lbCat.textContent   = cat   ? cat.textContent   : '';
+  function renderLb() {
+    var img = currentImages[lbIndex];
+    if (!img) return;
+    lbImg.src           = img.src;
+    lbImg.alt           = img.title || '';
+    lbTitle.textContent = img.title || '';
+    lbCat.textContent   = img.cat   || '';
+    lbPrev.style.display = currentImages.length > 1 ? '' : 'none';
+    lbNext.style.display = currentImages.length > 1 ? '' : 'none';
+  }
+
+  function openLb(groupEl, idx) {
+    currentImages = parseImages(groupEl);
+    if (!currentImages.length) return;
+    lbIndex = ((idx || 0) % currentImages.length + currentImages.length) % currentImages.length;
+    renderLb();
     lb.classList.add('lb-open');
     document.body.style.overflow = 'hidden';
-    lbPrev.style.display = visible.length > 1 ? '' : 'none';
-    lbNext.style.display = visible.length > 1 ? '' : 'none';
   }
 
-  function closeLightbox() {
+  function closeLb() {
     lb.classList.remove('lb-open');
     document.body.style.overflow = '';
     setTimeout(function () { lbImg.src = ''; }, 300);
   }
 
-  function navLightbox(dir) { openLightbox(lbIndex + dir); }
+  function navLb(dir) {
+    lbIndex = ((lbIndex + dir) % currentImages.length + currentImages.length) % currentImages.length;
+    renderLb();
+  }
 
-  cards.forEach(function (card) {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', function () {
-      var visible = visibleCards();
-      var idx = visible.indexOf(card);
-      openLightbox(idx >= 0 ? idx : 0);
-    });
+  /* Click on hero or thumb */
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-group-idx]');
+    if (!trigger) return;
+    var groupEl = trigger.closest('.gallery-group');
+    if (!groupEl) return;
+    e.preventDefault();
+    openLb(groupEl, parseInt(trigger.dataset.groupIdx || 0, 10));
   });
 
-  lbClose.addEventListener('click', closeLightbox);
-  lbPrev.addEventListener('click',  function () { navLightbox(-1); });
-  lbNext.addEventListener('click',  function () { navLightbox(1); });
-
-  lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
-
+  /* Keyboard: Enter/Space on hero/thumb, arrows + Escape in lightbox */
   document.addEventListener('keydown', function (e) {
-    if (!lb.classList.contains('lb-open')) return;
-    if (e.key === 'Escape')     closeLightbox();
-    if (e.key === 'ArrowLeft')  navLightbox(-1);
-    if (e.key === 'ArrowRight') navLightbox(1);
+    if (lb.classList.contains('lb-open')) {
+      if (e.key === 'Escape')     { closeLb(); return; }
+      if (e.key === 'ArrowLeft')  { navLb(-1); return; }
+      if (e.key === 'ArrowRight') { navLb(1);  return; }
+    }
+    if (e.key === 'Enter' || e.key === ' ') {
+      var trigger = e.target.closest('[data-group-idx]');
+      if (!trigger) return;
+      var groupEl = trigger.closest('.gallery-group');
+      if (groupEl) openLb(groupEl, parseInt(trigger.dataset.groupIdx, 10));
+    }
   });
+
+  /* EV featured section image -> open single-image lightbox */
+  if (evSection) {
+    var evImg = evSection.querySelector('.gallery-ev-img img');
+    if (evImg) {
+      evImg.parentElement.style.cursor = 'pointer';
+      evImg.parentElement.addEventListener('click', function () {
+        currentImages = [{ src: evImg.src, title: 'Tesla Wall Connector Install', cat: 'EV & Battery' }];
+        lbIndex = 0;
+        renderLb();
+        lb.classList.add('lb-open');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+  }
+
+  lbClose.addEventListener('click', closeLb);
+  lbPrev.addEventListener('click',  function () { navLb(-1); });
+  lbNext.addEventListener('click',  function () { navLb(1);  });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
 }());
