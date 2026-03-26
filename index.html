@@ -50,9 +50,6 @@
 
   <!-- ═══════════════════════════════════════════════════
        LOCAL BUSINESS STRUCTURED DATA  (JSON-LD)
-       Tells Google exactly who, what, where, and what
-       services are offered — feeds rich results &
-       Google Business knowledge panel.
   ════════════════════════════════════════════════════ -->
   <script type="application/ld+json">
   {
@@ -107,7 +104,8 @@
       ]
     },
     "sameAs": [
-      "https://www.instagram.com/mag_electric_/"
+      "https://www.instagram.com/mag_electric_/",
+      "https://www.facebook.com/profile.php?id=61578703290723"
     ],
     "priceRange": "$$",
     "openingHoursSpecification": [
@@ -231,11 +229,13 @@
           <h3>Whole Home Rewires</h3>
           <p>Outdated, aluminum, or damaged wiring replaced safely and to code. The most critical investment you&rsquo;ll make in your home&rsquo;s safety.</p>
         </div>
-        <div class="service-card">
+        <!-- Panel Upgrades — links to dedicated landing page -->
+        <a href="panel-upgrades.html" class="service-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;">
           <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="2" x2="8" y2="22"/><line x1="16" y1="2" x2="16" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
           <h3>Panel Upgrades</h3>
           <p>200-amp service upgrades, subpanel installs, and safety inspections. If your panel is over 20 years old, it&rsquo;s time for a conversation.</p>
-        </div>
+          <span style="margin-top:auto;padding-top:14px;color:#EAB308;font-size:.875rem;font-weight:600;">Full Details &rarr;</span>
+        </a>
         <div class="service-card">
           <div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="17" height="12" rx="2" ry="2"/><polyline points="18 9 22 12 18 15"/></svg></div>
           <h3>EV Charger Installation</h3>
@@ -360,7 +360,6 @@
       </div>
     </div>
 
-    <!-- EV & BATTERY FEATURED — testla_1.jpg used here only, not repeated anywhere -->
     <div class="gallery-ev-feature" id="gallery-ev-section">
       <div class="container">
         <div class="gallery-ev-layout">
@@ -383,90 +382,42 @@
       </div>
     </div>
 
-    <!-- GALLERY GROUPS -->
     <div class="container">
       <div class="gallery-groups">
-
-        <!-- =====================================================
-             SOLAR & ENPHASE
-             Hero: solar_sunset_commercial (most dramatic shot)
-             Thumbs: solarPanels_1, enphase_panels, solarPanels_8, solarPanels_3 (+8 more)
-             All 13 images in lightbox, scoped to this group only
-             ===================================================== -->
-        <div class="gallery-group" data-group="solar"
-          data-images='[{"src":"images/solar_sunset_commercial.jpg","title":"Commercial Solar Install — Central Coast CA","cat":"Solar & Enphase"},{"src":"images/solarPanels_1.jpg","title":"Residential Solar System — SLO County","cat":"Solar & Enphase"},{"src":"images/enphase_panels.jpg","title":"Enphase Microinverter System","cat":"Solar & Enphase"},{"src":"images/solarPanels_8.jpg","title":"Rooftop Solar Installation — Central Coast","cat":"Solar & Enphase"},{"src":"images/solarPanels_3.jpg","title":"Solar Array Build-Out","cat":"Solar & Enphase"},{"src":"images/solarPanels_2.jpg","title":"Residential Solar System","cat":"Solar & Enphase"},{"src":"images/solarPanels_4.jpg","title":"Grid-Tie Solar Array","cat":"Solar & Enphase"},{"src":"images/solarPanels_5.jpg","title":"Residential Rooftop Solar","cat":"Solar & Enphase"},{"src":"images/solarPanels_6.jpg","title":"Residential Solar Install","cat":"Solar & Enphase"},{"src":"images/solarPanels_7.jpg","title":"Complete Solar Array","cat":"Solar & Enphase"},{"src":"images/enphase_panels_2.jpg","title":"Enphase Microinverter System","cat":"Solar & Enphase"},{"src":"images/enphase_panels_3.jpg","title":"Enphase Solar Build-Out","cat":"Solar & Enphase"},{"src":"images/enphase_panels_4.jpg","title":"Solar-Ready Panel Integration","cat":"Solar & Enphase"}]'>
-          <header class="gallery-group-hd">
-            <span class="gallery-cat-tag">Solar &amp; Enphase</span>
-            <span class="gallery-group-count">13 photos &mdash; click any to view all</span>
-          </header>
+        <div class="gallery-group" data-group="solar" data-images='[{"src":"images/solar_sunset_commercial.jpg","title":"Commercial Solar Install \u2014 Central Coast CA","cat":"Solar & Enphase"},{"src":"images/solarPanels_1.jpg","title":"Residential Solar System \u2014 SLO County","cat":"Solar & Enphase"},{"src":"images/enphase_panels.jpg","title":"Enphase Microinverter System","cat":"Solar & Enphase"},{"src":"images/solarPanels_8.jpg","title":"Rooftop Solar Installation \u2014 Central Coast","cat":"Solar & Enphase"},{"src":"images/solarPanels_3.jpg","title":"Solar Array Build-Out","cat":"Solar & Enphase"},{"src":"images/solarPanels_2.jpg","title":"Residential Solar System","cat":"Solar & Enphase"},{"src":"images/solarPanels_4.jpg","title":"Grid-Tie Solar Array","cat":"Solar & Enphase"},{"src":"images/solarPanels_5.jpg","title":"Residential Rooftop Solar","cat":"Solar & Enphase"},{"src":"images/solarPanels_6.jpg","title":"Residential Solar Install","cat":"Solar & Enphase"},{"src":"images/solarPanels_7.jpg","title":"Complete Solar Array","cat":"Solar & Enphase"},{"src":"images/enphase_panels_2.jpg","title":"Enphase Microinverter System","cat":"Solar & Enphase"},{"src":"images/enphase_panels_3.jpg","title":"Enphase Solar Build-Out","cat":"Solar & Enphase"},{"src":"images/enphase_panels_4.jpg","title":"Solar-Ready Panel Integration","cat":"Solar & Enphase"}]'>
+          <header class="gallery-group-hd"><span class="gallery-cat-tag">Solar &amp; Enphase</span><span class="gallery-group-count">13 photos &mdash; click any to view all</span></header>
           <div class="gallery-group-body">
             <figure class="gallery-hero" data-group-idx="0" tabindex="0" role="button" aria-label="View Solar & Enphase photos">
               <img src="images/solar_sunset_commercial.jpg" alt="Commercial solar panel installation on the Central Coast CA by Mag Electric" loading="lazy" />
               <figcaption><strong>Commercial Solar Install</strong></figcaption>
             </figure>
             <div class="gallery-thumbs">
-              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Residential solar system SLO County">
-                <img src="images/solarPanels_1.jpg" alt="Residential solar panel system installation SLO County CA" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb" data-group-idx="2" tabindex="0" role="button" aria-label="Enphase microinverter system Santa Maria">
-                <img src="images/enphase_panels.jpg" alt="Enphase microinverter solar system installed in Santa Maria CA" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb" data-group-idx="3" tabindex="0" role="button" aria-label="Rooftop solar installation Central Coast">
-                <img src="images/solarPanels_8.jpg" alt="Rooftop solar panel installation Central Coast California" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb gallery-thumb-more" data-group-idx="4" tabindex="0" role="button" aria-label="View 8 more solar photos">
-                <img src="images/solarPanels_3.jpg" alt="Solar panel array installation Santa Barbara County CA" loading="lazy" />
-                <div class="gallery-more-label" aria-hidden="true">+8 more</div>
-              </figure>
+              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Residential solar system SLO County"><img src="images/solarPanels_1.jpg" alt="Residential solar panel system installation SLO County CA" loading="lazy" /></figure>
+              <figure class="gallery-thumb" data-group-idx="2" tabindex="0" role="button" aria-label="Enphase microinverter system Santa Maria"><img src="images/enphase_panels.jpg" alt="Enphase microinverter solar system installed in Santa Maria CA" loading="lazy" /></figure>
+              <figure class="gallery-thumb" data-group-idx="3" tabindex="0" role="button" aria-label="Rooftop solar installation Central Coast"><img src="images/solarPanels_8.jpg" alt="Rooftop solar panel installation Central Coast California" loading="lazy" /></figure>
+              <figure class="gallery-thumb gallery-thumb-more" data-group-idx="4" tabindex="0" role="button" aria-label="View 8 more solar photos"><img src="images/solarPanels_3.jpg" alt="Solar panel array installation Santa Barbara County CA" loading="lazy" /><div class="gallery-more-label" aria-hidden="true">+8 more</div></figure>
             </div>
           </div>
         </div>
 
-        <!-- =====================================================
-             PANEL UPGRADES
-             Hero: panel_wiring_a (shows precision craftsmanship)
-             Thumbs: mag_electrical_panel, meterBox_4, mag_electrical_panel3, meterBox_4_b (+3 more)
-             All 8 images in lightbox, scoped to this group only
-             ===================================================== -->
-        <div class="gallery-group" data-group="panels"
-          data-images='[{"src":"images/panel_wiring_a.jpg","title":"Precision Panel Wiring — Santa Maria CA","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel.jpg","title":"Residential Electrical Panel Install","cat":"Panel Upgrades"},{"src":"images/meterBox_4.jpg","title":"Meter Box Upgrade — Central Coast","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel3.jpg","title":"200-Amp Panel Upgrade","cat":"Panel Upgrades"},{"src":"images/meterBox_4_b.jpg","title":"Meter & Service Upgrade","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel2.jpg","title":"Panel Replacement","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel4.jpg","title":"Service Panel Upgrade","cat":"Panel Upgrades"},{"src":"images/mag_meter.jpg","title":"Meter Base Replacement","cat":"Panel Upgrades"}]'>
-          <header class="gallery-group-hd">
-            <span class="gallery-cat-tag">Panel Upgrades</span>
-            <span class="gallery-group-count">8 photos &mdash; click any to view all</span>
-          </header>
+        <div class="gallery-group" data-group="panels" data-images='[{"src":"images/panel_wiring_a.jpg","title":"Precision Panel Wiring \u2014 Santa Maria CA","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel.jpg","title":"Residential Electrical Panel Install","cat":"Panel Upgrades"},{"src":"images/meterBox_4.jpg","title":"Meter Box Upgrade \u2014 Central Coast","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel3.jpg","title":"200-Amp Panel Upgrade","cat":"Panel Upgrades"},{"src":"images/meterBox_4_b.jpg","title":"Meter & Service Upgrade","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel2.jpg","title":"Panel Replacement","cat":"Panel Upgrades"},{"src":"images/mag_electrical_panel4.jpg","title":"Service Panel Upgrade","cat":"Panel Upgrades"},{"src":"images/mag_meter.jpg","title":"Meter Base Replacement","cat":"Panel Upgrades"}]'>
+          <header class="gallery-group-hd"><span class="gallery-cat-tag">Panel Upgrades</span><span class="gallery-group-count">8 photos &mdash; click any to view all</span></header>
           <div class="gallery-group-body">
             <figure class="gallery-hero" data-group-idx="0" tabindex="0" role="button" aria-label="View Panel Upgrade photos">
               <img src="images/panel_wiring_a.jpg" alt="Licensed electrician performing precision electrical panel wiring upgrade in Santa Maria CA" loading="lazy" />
               <figcaption><strong>Precision Panel Wiring</strong></figcaption>
             </figure>
             <div class="gallery-thumbs">
-              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Residential electrical panel install">
-                <img src="images/mag_electrical_panel.jpg" alt="Residential electrical panel installation Santa Maria California" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb" data-group-idx="2" tabindex="0" role="button" aria-label="Meter box upgrade SLO County">
-                <img src="images/meterBox_4.jpg" alt="Electrical meter box upgrade SLO County CA by Mag Electric" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb" data-group-idx="3" tabindex="0" role="button" aria-label="200-amp panel upgrade Santa Barbara County">
-                <img src="images/mag_electrical_panel3.jpg" alt="200-amp electrical panel upgrade Santa Barbara County CA" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb gallery-thumb-more" data-group-idx="4" tabindex="0" role="button" aria-label="View 3 more panel photos">
-                <img src="images/meterBox_4_b.jpg" alt="Electrical meter and service upgrade Central Coast CA" loading="lazy" />
-                <div class="gallery-more-label" aria-hidden="true">+3 more</div>
-              </figure>
+              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Residential electrical panel install"><img src="images/mag_electrical_panel.jpg" alt="Residential electrical panel installation Santa Maria California" loading="lazy" /></figure>
+              <figure class="gallery-thumb" data-group-idx="2" tabindex="0" role="button" aria-label="Meter box upgrade SLO County"><img src="images/meterBox_4.jpg" alt="Electrical meter box upgrade SLO County CA by Mag Electric" loading="lazy" /></figure>
+              <figure class="gallery-thumb" data-group-idx="3" tabindex="0" role="button" aria-label="200-amp panel upgrade Santa Barbara County"><img src="images/mag_electrical_panel3.jpg" alt="200-amp electrical panel upgrade Santa Barbara County CA" loading="lazy" /></figure>
+              <figure class="gallery-thumb gallery-thumb-more" data-group-idx="4" tabindex="0" role="button" aria-label="View 3 more panel photos"><img src="images/meterBox_4_b.jpg" alt="Electrical meter and service upgrade Central Coast CA" loading="lazy" /><div class="gallery-more-label" aria-hidden="true">+3 more</div></figure>
             </div>
           </div>
         </div>
 
-        <!-- =====================================================
-             ADU & NEW CONSTRUCTION
-             1 photo — hero full-width + service promo text
-             ===================================================== -->
-        <div class="gallery-group gallery-group--solo" data-group="new-construction"
-          data-images='[{"src":"images/wall_framing.jpg","title":"New Construction Electrical Rough-In — Santa Maria CA","cat":"ADU & New Construction"}]'>
-          <header class="gallery-group-hd">
-            <span class="gallery-cat-tag">ADU &amp; New Construction</span>
-            <span class="gallery-group-count">1 photo</span>
-          </header>
+        <div class="gallery-group gallery-group--solo" data-group="new-construction" data-images='[{"src":"images/wall_framing.jpg","title":"New Construction Electrical Rough-In \u2014 Santa Maria CA","cat":"ADU & New Construction"}]'>
+          <header class="gallery-group-hd"><span class="gallery-cat-tag">ADU &amp; New Construction</span><span class="gallery-group-count">1 photo</span></header>
           <div class="gallery-group-body">
             <figure class="gallery-hero" data-group-idx="0" tabindex="0" role="button" aria-label="New Construction Rough-In">
               <img src="images/wall_framing.jpg" alt="Electrical rough-in wiring during new construction framing in Santa Maria CA by Mag Electric" loading="lazy" />
@@ -480,65 +431,38 @@
           </div>
         </div>
 
-        <!-- =====================================================
-             REMODELS & LIGHTING
-             Hero: kitchen_remodel_2 (lighting design)
-             Thumb: kitchen_remodel_1
-             Lightbox shows both, scoped to this group only
-             ===================================================== -->
-        <div class="gallery-group gallery-group--col" data-group="remodels"
-          data-images='[{"src":"images/kitchen_remodel_2.jpg","title":"Kitchen Recessed Lighting Design — Central Coast CA","cat":"Remodels & Lighting"},{"src":"images/kitchen_remodel_1.jpg","title":"Kitchen Remodel Electrical Wiring","cat":"Remodels & Lighting"}]'>
-          <header class="gallery-group-hd">
-            <span class="gallery-cat-tag">Remodels &amp; Lighting</span>
-            <span class="gallery-group-count">2 photos &mdash; click to view both</span>
-          </header>
+        <div class="gallery-group gallery-group--col" data-group="remodels" data-images='[{"src":"images/kitchen_remodel_2.jpg","title":"Kitchen Recessed Lighting Design \u2014 Central Coast CA","cat":"Remodels & Lighting"},{"src":"images/kitchen_remodel_1.jpg","title":"Kitchen Remodel Electrical Wiring","cat":"Remodels & Lighting"}]'>
+          <header class="gallery-group-hd"><span class="gallery-cat-tag">Remodels &amp; Lighting</span><span class="gallery-group-count">2 photos &mdash; click to view both</span></header>
           <div class="gallery-group-body">
             <figure class="gallery-hero" data-group-idx="0" tabindex="0" role="button" aria-label="Kitchen Lighting Design">
               <img src="images/kitchen_remodel_2.jpg" alt="Kitchen recessed lighting design and installation by licensed electrician Central Coast CA" loading="lazy" />
               <figcaption><strong>Kitchen Lighting Design</strong></figcaption>
             </figure>
             <div class="gallery-thumbs">
-              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Kitchen Remodel Wiring">
-                <img src="images/kitchen_remodel_1.jpg" alt="Kitchen remodel electrical wiring and circuit installation Santa Maria CA" loading="lazy" />
-              </figure>
+              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Kitchen Remodel Wiring"><img src="images/kitchen_remodel_1.jpg" alt="Kitchen remodel electrical wiring and circuit installation Santa Maria CA" loading="lazy" /></figure>
             </div>
           </div>
         </div>
 
-        <!-- =====================================================
-             COMMERCIAL
-             Hero: commercial_76_station (largest commercial job)
-             Thumbs: mag_on_job, mag_team1
-             Lightbox shows all 3, scoped to this group only
-             ===================================================== -->
-        <div class="gallery-group gallery-group--col" data-group="commercial"
-          data-images='[{"src":"images/commercial_76_station.jpg","title":"Commercial Electrical — 76 Gas Station Santa Maria CA","cat":"Commercial"},{"src":"images/mag_on_job.jpg","title":"Owner Matthew Gil on Every Commercial Job","cat":"Commercial"},{"src":"images/mag_team1.jpg","title":"Mag Electric Licensed Crew — Santa Maria CA","cat":"Commercial"}]'>
-          <header class="gallery-group-hd">
-            <span class="gallery-cat-tag">Commercial</span>
-            <span class="gallery-group-count">3 photos &mdash; click any to view all</span>
-          </header>
+        <div class="gallery-group gallery-group--col" data-group="commercial" data-images='[{"src":"images/commercial_76_station.jpg","title":"Commercial Electrical \u2014 76 Gas Station Santa Maria CA","cat":"Commercial"},{"src":"images/mag_on_job.jpg","title":"Owner Matthew Gil on Every Commercial Job","cat":"Commercial"},{"src":"images/mag_team1.jpg","title":"Mag Electric Licensed Crew \u2014 Santa Maria CA","cat":"Commercial"}]'>
+          <header class="gallery-group-hd"><span class="gallery-cat-tag">Commercial</span><span class="gallery-group-count">3 photos &mdash; click any to view all</span></header>
           <div class="gallery-group-body">
             <figure class="gallery-hero" data-group-idx="0" tabindex="0" role="button" aria-label="Commercial Electrical - 76 Station">
               <img src="images/commercial_76_station.jpg" alt="Commercial electrical installation at 76 gas station Santa Maria CA by Mag Electric" loading="lazy" />
               <figcaption><strong>Commercial Electrical &mdash; 76 Station</strong></figcaption>
             </figure>
             <div class="gallery-thumbs">
-              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Owner on Every Job">
-                <img src="images/mag_on_job.jpg" alt="Mag Electric owner Matthew Gil personally on commercial job site Santa Maria CA" loading="lazy" />
-              </figure>
-              <figure class="gallery-thumb" data-group-idx="2" tabindex="0" role="button" aria-label="Mag Electric Crew">
-                <img src="images/mag_team1.jpg" alt="Mag Electric licensed electrician crew on commercial job site Central Coast CA" loading="lazy" />
-              </figure>
+              <figure class="gallery-thumb" data-group-idx="1" tabindex="0" role="button" aria-label="Owner on Every Job"><img src="images/mag_on_job.jpg" alt="Mag Electric owner Matthew Gil personally on commercial job site Santa Maria CA" loading="lazy" /></figure>
+              <figure class="gallery-thumb" data-group-idx="2" tabindex="0" role="button" aria-label="Mag Electric Crew"><img src="images/mag_team1.jpg" alt="Mag Electric licensed electrician crew on commercial job site Central Coast CA" loading="lazy" /></figure>
             </div>
           </div>
         </div>
-
-      </div><!-- /.gallery-groups -->
+      </div>
 
       <div style="text-align:center;margin-top:64px">
         <a href="#estimate" class="btn btn-primary">Ready to Start Your Project? &rarr;</a>
       </div>
-    </div><!-- /.container -->
+    </div>
   </section>
 
   <!-- CTA BANNER -->
@@ -624,9 +548,28 @@
         </address>
         <p class="license-num">CA CSLB License #1115849</p>
       </div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">SPAN Smart Panels</a></li><li><a href="#services">Whole Home Rewires</a></li><li><a href="#services">Panel Upgrades</a></li><li><a href="#services">EV Charger Installation</a></li><li><a href="#services">Lighting &amp; Smart Home</a></li><li><a href="#services">ADU &amp; New Construction</a></li><li><a href="#services">Commercial Electrical</a></li></ul></div>
-      <div class="footer-col"><h4>Service Area</h4><ul><li>Santa Maria</li><li>Lompoc</li><li>Santa Barbara</li><li>San Luis Obispo</li><li>Paso Robles</li><li>Atascadero</li><li>Bakersfield &amp; Central Valley</li><li>&amp; surrounding areas</li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="#why-us">Why Mag Electric</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#estimate">Free Estimate</a></li><li><a href="tel:8058637445">Contact Us</a></li><li><a href="https://www.instagram.com/mag_electric_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="#services">SPAN Smart Panels</a></li>
+        <li><a href="#services">Whole Home Rewires</a></li>
+        <li><a href="panel-upgrades.html">Panel Upgrades</a></li>
+        <li><a href="#services">EV Charger Installation</a></li>
+        <li><a href="#services">Lighting &amp; Smart Home</a></li>
+        <li><a href="#services">ADU &amp; New Construction</a></li>
+        <li><a href="#services">Commercial Electrical</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Service Area</h4><ul>
+        <li>Santa Maria</li><li>Lompoc</li><li>Santa Barbara</li>
+        <li>San Luis Obispo</li><li>Paso Robles</li><li>Atascadero</li>
+        <li>Bakersfield &amp; Central Valley</li><li>&amp; surrounding areas</li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="#why-us">Why Mag Electric</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#estimate">Free Estimate</a></li>
+        <li><a href="tel:8058637445">Contact Us</a></li>
+        <li><a href="https://www.instagram.com/mag_electric_/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61578703290723" target="_blank" rel="noopener">Facebook</a></li>
+      </ul></div>
     </div>
     <div class="footer-bottom"><div class="container"><p>&copy; 2026 Mag Electric Inc. All rights reserved. &mdash; Santa Maria, CA &mdash; Quality &amp; Integrity</p></div></div>
   </footer>
@@ -637,10 +580,7 @@
     <button id="lb-prev" class="lb-nav lb-prev" aria-label="Previous photo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
     <div class="lb-content">
       <img id="lb-img" src="" alt="" />
-      <div class="lb-caption">
-        <span id="lb-cat" class="lb-cat-tag"></span>
-        <p id="lb-title" class="lb-title"></p>
-      </div>
+      <div class="lb-caption"><span id="lb-cat" class="lb-cat-tag"></span><p id="lb-title" class="lb-title"></p></div>
     </div>
     <button id="lb-next" class="lb-nav lb-next" aria-label="Next photo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
