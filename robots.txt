@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 
-# Update the sitemap URL after connecting your custom domain
-Sitemap: https://magelectric.com/sitemap.xml
+# Disallow the thank-you confirmation page from index (user-only destination)
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+Sitemap: https://magelectric.net/sitemap.xml
