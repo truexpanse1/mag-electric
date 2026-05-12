@@ -5,4 +5,43 @@ Allow: /
 Disallow: /thank-you.html
 Disallow: /thank-you
 
+# Explicitly welcome AI search crawlers
+# Each user-agent block declares its own rules so GEO/AI-visibility audits
+# count them as "explicitly allowed" (wildcard * does not satisfy that check).
+
+User-agent: GPTBot
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
+User-agent: Bytespider
+Allow: /
+Disallow: /thank-you.html
+Disallow: /thank-you
+
 Sitemap: https://magelectric.net/sitemap.xml
