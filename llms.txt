@@ -4,10 +4,10 @@
 
 ## Core pages
 
-- [MAG Electric Home](https://magelectric.net/): Licensed electrician in Santa Maria CA. Overview of services (panel upgrades, EV chargers, solar wiring, commercial electrical, whole home rewires, SPAN smart panels), service area, project gallery, and direct contact.
-- [Panel Upgrades](https://magelectric.net/panel-upgrades): Dedicated landing page for 200-amp electrical panel upgrades — code-compliant service upgrades, subpanel installations, and electrical safety inspections.
-- [Commercial Electrical](https://magelectric.net/commercial): Commercial electrical work for office buildings, retail spaces, gas stations and warehouses — permitted commercial electrical on time and to code.
-- [Electrician Sales Playbook](https://magelectric.net/playbook.html): Sales and operations playbook for electrical contractors — internal reference and example of MAG Electric's approach to business operations.
+- [MAG Electric Home](https://mag-electric.netlify.app/): Licensed electrician in Santa Maria CA. Overview of services (panel upgrades, EV chargers, solar wiring, commercial electrical, whole home rewires, SPAN smart panels), service area, project gallery, and direct contact.
+- [Panel Upgrades](https://mag-electric.netlify.app/panel-upgrades): Dedicated landing page for 200-amp electrical panel upgrades — code-compliant service upgrades, subpanel installations, and electrical safety inspections.
+- [Commercial Electrical](https://mag-electric.netlify.app/commercial): Commercial electrical work for office buildings, retail spaces, gas stations and warehouses — permitted commercial electrical on time and to code.
+- [Electrician Sales Playbook](https://mag-electric.netlify.app/playbook.html): Sales and operations playbook for electrical contractors — internal reference and example of MAG Electric's approach to business operations.
 
 ## Services offered
 
